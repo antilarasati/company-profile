@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->id();
+            $table->integer('tahun_berdiri');
+            $table->string('latar_belakang');
+            $table->string('visi');
+            $table->string('misi');
             $table->timestamps();
         });
     }

@@ -15,7 +15,6 @@ class Contact extends Model
         'alamat',
         'kontak',
         'jam_oprasional',
-        'email',
-        'media_social'
+        'email'
     ];
 }
