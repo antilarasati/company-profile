@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Menu extends Model
+class testimonial extends Model
 {
     use HasFactory;
-    
-    protected $table = 'menu';
-    protected $primaryKey = 'id_menu';
+
+    protected $table = 'testimonial';
+    protected $primaryKey = 'id_testimonial';
 
     protected $fillable = [
         'nama',
+        'email',
         'deskripsi',
-        'harga_menu',
-        'foto',
     ];
 }
