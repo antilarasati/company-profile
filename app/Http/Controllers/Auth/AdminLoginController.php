@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminLoginController extends Controller
 {
@@ -18,7 +19,11 @@ class AdminLoginController extends Controller
             'username' => 'required',
             'password' => 'required',
         ]);
+
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('admin.dashboard');
+        }
+
+        return back()->withErrors(['login_error' => 'Username atau Password Salah.']) ->onlyInput('username');
     }
-        
-        
- }
+}
