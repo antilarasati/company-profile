@@ -42,8 +42,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/menu/edit/{id_menu}', [MenuController::class, 'edit'])->name('menu.edit');
     Route::put('/admin/menu/update/{id_menu}', [MenuController::class, 'update'])->name('menu.update');
     Route::get('/admin/menu/delete/{id_menu}', [MenuController::class, 'delete'])->name('menu.delete');
-    
-    
+
+
 
 
 });
