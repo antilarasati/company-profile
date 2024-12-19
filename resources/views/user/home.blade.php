@@ -51,7 +51,13 @@
         <div class="container-xxl position-relative p-0">
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark px-4 px-lg-5 py-3 py-lg-0">
                 <a href="" class="navbar-brand p-0">
-                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>{{ $home->nama_resto }}</h1>
+                    <h1 class="text-primary m-0"><i class="fa fa-utensils me-3"></i>
+                    @if (!empty($home))
+                    {{ $home->nama_resto }}
+                    @else
+                    Company Name
+                    @endif
+                    </h1>
                     <!-- <img src="img/logo.png" alt="Logo"> -->
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -76,8 +82,20 @@
                 <div class="container my-5 py-5">
                     <div class="row align-items-center g-5">
                         <div class="col-lg-6 text-center text-lg-start">
-                            <h1 class="display-3 text-white animated slideInLeft">{{ $home->slogan }}</h1>
-                            <p class="text-white animated slideInLeft mb-4 pb-2">{{ $home->deskripsi }}</p>
+                            <h1 class="display-3 text-white animated slideInLeft">
+                                @if (!empty($home))
+                                {{ $home->slogan }}
+                                @else
+                                Slogan Anda
+                                @endif
+                            </h1>
+                            <p class="text-white animated slideInLeft mb-4 pb-2">
+                                @if (!empty($home))
+                                {{ $home->deskripsi }}
+                                @else
+                                Deskripsi Anda
+                                @endif
+                            </p>
                             <a href="" class="btn btn-primary py-sm-3 px-sm-5 me-3 animated slideInLeft">Book A
                                 Table</a>
                         </div>
@@ -118,13 +136,36 @@
                         <h5 class="section-title ff-secondary text-start text-primary fw-normal">About Us</h5>
                         <h1 class="mb-4">Welcome to Selera Nusantara</h1>
 
-                        <p class="mb-4">{{ $about->tahun_berdiri }}</p>
+                        <p class="mb-4">
+                            @if (!empty($about))
+                            {{ $about->tahun_berdiri }}
+                            @else
+                            Tahun berdiri?
+                            @endif
+                        </p>
 
-                        <p class="mb-4">{{ $about->latar_belakang }}</p>
+                        <p class="mb-4">
+                            @if (!empty($about))
+                            {{ $about->latar_belakang }}
+                            @else
+                            Latar Belakang?
+                            @endif
+                        </p>
 
-                        <p class="mb-4"><strong>Visi:</strong> {{ $about->visi }}</p>
-
-                        <p class="mb-4"><strong>Misi:</strong> {{ $about->misi }}</p>
+                        <p class="mb-4"><strong>Visi:</strong>
+                            @if (!empty($about))
+                            {{ $about->visi }}
+                            @else
+                            visi?
+                            @endif
+                        </p>
+                        <p class="mb-4"><strong>Misi:</strong>
+                            @if (!empty($about))
+                            {{ $about->misi }}
+                            @else
+                            misi?
+                            @endif
+                        </p>
 
                         <div class="row g-4 mb-4">
                             <div class="col-sm-6">

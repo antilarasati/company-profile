@@ -37,7 +37,7 @@
                 <span>
                   <iconify-icon icon="solar:home-smile-bold-duotone" class="fs-6"></iconify-icon>
                 </span>
-                <span class="hide-menu">Dashboard</span> 
+                <span class="hide-menu">Dashboard</span>
               </a>
             </li>
             <li class="nav-small-cap">
@@ -137,9 +137,6 @@
                     <a href="{{ route('admin.profile') }}" class="d-flex align-items-center gap-2 dropdown-item">
                       <i class="ti ti-user fs-6"></i>
                       <p class="mb-0 fs-3">My Profile</p>
-                      @if(session('success'))
-                        <p style="color:green;">{{ session('success') }}</p>
-                      @endif
                     </a>
                     <a href="{{ route('logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
                   </div>

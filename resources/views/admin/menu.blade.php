@@ -1,14 +1,19 @@
 @extends('.admin.layout.app')
 
-@section('title','Admin menu')
+@section('title', 'Admin menu')
 
 @section('content')
-<div class="col-lg-12">
+    <div class="col-lg-12">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
-                <a href="{{route('menu.tambah')}}" class="btn btn-primary btn-sm">Tambah</a>
-                    <table class="table text-nowrap align-middle mb-0" id="menu" >
+                    <a href="{{ route('menu.tambah') }}" class="btn btn-primary btn-sm">Tambah</a>
+                    <table class="table text-nowrap align-middle mb-0" id="menu">
                         <thead>
                             <tr class="border-2 border-bottom border-primary border-0">
                                 <th scope="col" class="ps-0">NO</th>
@@ -20,23 +25,24 @@
                             </tr>
                         </thead>
                         <tbody class="table-group-divider">
-                    @foreach($menus as $menu)
+                            @foreach ($menus as $menu)
+                                <tr>
+                                    <th scope="row">{{ $loop->iteration }}</th>
+                                    <td class="text-center">{{ $menu->nama }}</td>
+                                    <td class="text-center">{{ $menu->deskripsi }}</td>
+                                    <td class="text-center">{{ $menu->harga_menu }}</td>
+                                    <td>
+                                        <img src="{{ asset('storage/' . $menu->foto) }}" alt="" height="50">
+                                    </td>
+                                    <td class="text-center">
+                                        <a href="{{ route('menu.edit', $menu->id_menu) }}"
+                                            class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="{{ route('menu.delete', $menu->id_menu) }}"
+                                            class="btn btn-primary btn-sm">Hapus</a>
+                                    </td>
 
-                        <tr>
-                        <th scope="row">{{$loop->iteration}}</th>
-                        <td  class="text-center">{{$menu->nama}}</td>
-                        <td  class="text-center">{{$menu->deskripsi}}</td>
-                        <td  class="text-center">{{$menu->harga_menu}}</td>
-                        <td>
-                        <img src="{{ asset('storage/' . $menu->foto) }}" alt="" height="50">
-                        </td>
-                        <td class="text-center">
-                            <a href="{{route('menu.edit', $menu->id_menu)}}" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="{{route('menu.delete', $menu->id_menu)}}" class="btn btn-primary btn-sm">Hapus</a>
-                        </td>
-
-                    </tr>
-                        @endforeach
+                                </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -44,10 +50,10 @@
         </div>
     </div>
 
-<script>
-    $(document).ready(function() {
-        $('#homes').DataTable();
-    });
-</script>
+    <script>
+        $(document).ready(function() {
+            $('#homes').DataTable();
+        });
+    </script>
 
 @endsection

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('homes', function (Blueprint $table) {
             $table->id('id_home')->primary()->autoIncrement();
-            $table->string('nama');
+            $table->string('nama_resto');
             $table->string('tagline');
             $table->string('slogan');
             $table->text('deskripsi');
