@@ -70,7 +70,7 @@ class HomeController extends Controller
         return redirect()->route('login');
     }
 
-    
+
 
     public function home()
     {
@@ -79,7 +79,7 @@ class HomeController extends Controller
     }
 
 
-    public function create() 
+    public function create()
     {
         return view('admin.home_tambah');
     }
@@ -118,7 +118,7 @@ class HomeController extends Controller
     {
         $home = Home::find($id_home);
         if (!$home) {
-            return back();  
+            return back();
         }
         return view('admin.edit_home', compact('home'));
     }
