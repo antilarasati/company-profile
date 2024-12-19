@@ -24,7 +24,7 @@
       border-radius: 15px;
       box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
       padding: 30px;
-      max-width: 400px;
+      width: 500px;
       margin: 50px auto;
     }
 
@@ -69,6 +69,11 @@
   <div class="page-wrapper" id="main-wrapper">
     <div class="d-flex align-items-center justify-content-center min-vh-100">
       <div class="login-wrapper">
+      @if ($errors->has('login_error'))
+					<div class="alert alert-danger" style="border-radius:40px 40px 40px 40px;">
+						{{ $errors->first('login_error')}}
+					</div>
+			@endif
         <!-- Header Form -->
         <div class="login-header">Login</div>
         <p class="text-center">Silakan login</p>

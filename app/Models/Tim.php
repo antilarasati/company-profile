@@ -9,7 +9,7 @@ class Tim extends Model
 {
     use HasFactory;
 
-    protected $table = 'tim';
+    protected $table = 'tims';
     protected $primaryKey = 'id_tim';
 
     protected $fillable = [

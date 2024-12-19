@@ -8,11 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Home extends Model
 {
     use HasFactory;
-    protected $table = 'home';
-    protected $primarykey ='id_home';
+    protected $table = 'homes';
+    protected $primaryKey ='id_home';
 
     protected $fillable = [
-        'nama',
+        'nama_resto',
         'tagline',
         'slogan',
         'deskripsi'

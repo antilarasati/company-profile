@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Home;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -18,17 +21,72 @@ class HomeController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function profile()
     {
-        //
+        $profile = Auth::user();
+        return view('admin.profile', compact('profile'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
+    public function updateprofile(Request $request)
+    {
+        $id = Auth::user()->id;
+        $user = User::find($id);
+
+        $request->validate([
+            'username' => 'required|unique:users,username,' . $id . ',id',
+            'password' => 'nullable|min:6',
+            'name' => 'required',
+
+        ]);
+
+        $user->update([
+            'username' => $request->username,
+            'password' => $request->filled('password') ? Hash::make($request->password) : $user->password,
+            'name' => $request->name,
+        ]);
+
+        return redirect()->route('admin.profile')->with('success', 'Data Admin Berhasil di Edit');
+    }
+
+    public function logoutAdmin(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->route('login');
+    }
+
+    
+
+    public function home()
+    {
+        $homes = Home::all();
+        return view('admin.home', compact('homes'));
+    }
+
+
+    public function create() 
+    {
+        return view('admin.home_tambah');
+    }
+
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nama_resto' => 'required',
+            'tagline' => 'required',
+            'slogan' => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+        Home::create([
+            'nama_resto' => $request->nama_resto,
+            'tagline' => $request->tagline,
+            'slogan' => $request->slogan,
+            'deskripsi' => $request->deskripsi,
+        ]);
+
+        return redirect()->route('home')->with('success','Data home Berhasil di Tambah');
     }
 
     /**
@@ -42,24 +100,47 @@ class HomeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Home $home)
+    public function edit(string $id_home)
     {
-        //
+        $home = Home::find($id_home);
+        if (!$home) {
+            return back();  
+        }
+        return view('admin.edit_home', compact('home'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Home $home)
+    public function update(Request $request, string $id_home)
     {
-        //
+        $home = Home::find($id_home);
+        $request->validate([
+            'nama_resto' => 'required',
+            'tagline' => 'required',
+            'slogan' => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+        $home->update([
+            'nama_resto' => $request->nama_resto,
+            'tagline' => $request->tagline,
+            'slogan' => $request->slogan,
+            'deskripsi' => $request->deskripsi,
+        ]);
+
+        return redirect()->route('home', $id_home)->with('success', 'Data Home Berhasil di Edit');
+
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Home $home)
+    public function delete($id)
     {
-        //
+        $home = Home::find($id);
+        $home->delete();
+
+        return redirect()->back()->with('success', 'Data HOME Berhasil diHapus');
     }
 }
