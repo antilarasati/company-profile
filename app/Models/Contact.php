@@ -9,7 +9,7 @@ class Contact extends Model
 {
     use HasFactory;
     protected $table = 'contacts';
-    protected $primarykey ='id_contact';
+    protected $primaryKey ='id_contact';
 
     protected $fillable = [
         'alamat',

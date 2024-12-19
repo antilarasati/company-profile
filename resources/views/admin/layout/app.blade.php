@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SeoDash Free Bootstrap Admin Template by Adminmart</title>
+  <title>Selera Nusantara - @yield('title')</title>
   <link rel="shortcut icon" type="image/png" href="{{ asset('assets_main/images/logos/seodashlogo.png') }}" />
   <link rel="stylesheet" href="{{ asset('assets_main/css/styles.min.css') }}" />
 </head>
@@ -69,7 +69,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-tims.html" aria-expanded="false">
+              <a class="sidebar-link" href="{{ route('tim')}}" aria-expanded="false">
                 <span>
                   <iconify-icon icon="solar:file-text-bold-duotone" class="fs-6"></iconify-icon>
                 </span>
@@ -93,23 +93,11 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-contacts.html" aria-expanded="false">
+              <a class="sidebar-link" href="{{ route('contact') }}" aria-expanded="false">
                 <span>
                   <iconify-icon icon="solar:text-field-focus-bold-duotone" class="fs-6"></iconify-icon>
                 </span>
                 <span class="hide-menu">Contact</span>
-              </a>
-            </li>
-            <li class="nav-small-cap">
-              <iconify-icon icon="solar:menu-dots-linear" class="nav-small-cap-icon fs-6" class="fs-6"></iconify-icon>
-              <span class="hide-menu">AUTH</span>
-            </li>
-            <li class="sidebar-item">
-              <a class="sidebar-link" href="./authentication-login.html" aria-expanded="false">
-                <span>
-                  <iconify-icon icon="solar:login-3-bold-duotone" class="fs-6"></iconify-icon>
-                </span>
-                <span class="hide-menu">Login</span>
               </a>
             </li>
 

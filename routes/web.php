@@ -2,12 +2,14 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\Auth\AdminLoginController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MenuController;
 use App\Http\Controllers\TestimonialController;
+use App\Http\Controllers\TimController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [HomeController::class, 'home'])->name('user.home');
+Route::get('/', [HomeController::class, 'userhome'])->name('user.home');
 Route::post('/testimonial', [TestimonialController::class, 'testimonial'])->name('user.testimonial');
 
 Route::middleware(['guest'])->group(function(){
@@ -42,8 +44,4 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/menu/edit/{id_menu}', [MenuController::class, 'edit'])->name('menu.edit');
     Route::put('/admin/menu/update/{id_menu}', [MenuController::class, 'update'])->name('menu.update');
     Route::get('/admin/menu/delete/{id_menu}', [MenuController::class, 'delete'])->name('menu.delete');
-
-
-
-
 });
