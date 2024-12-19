@@ -29,6 +29,7 @@
                         @error('latar_belakang')
                         {{$message}}
                         @enderror
+                        </div>
                     </div>
 
                     <div class="mb-3">
@@ -38,8 +39,9 @@
                         @error('visi')
                         {{$message}}
                         @enderror
+                        </div>
                     </div>
-\
+
                     <div class="mb-3">
                         <label for="misi" class="form-label">MISI</label>
                         <input type="text" class="form-control" id="misi" name="misi" value="{{old('misi', $about->misi)}}">
@@ -47,7 +49,9 @@
                         @error('misi')
                         {{$message}}
                         @enderror
+                        </div>
                     
+                        </div>
                     <button type="submit" class="btn btn-primary">SAVE</button>
 
                 </form>

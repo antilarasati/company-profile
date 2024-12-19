@@ -86,7 +86,7 @@ class AboutController extends Controller
             'misi' => $request->misi,
         ]);
 
-        return redirect()->route('about.tambah', $id_about)->with('success', 'Data about Berhasil di Edit');
+        return redirect()->route('about', $id_about)->with('success', 'Data about Berhasil di Edit');
     }
 
     /**
@@ -97,6 +97,6 @@ class AboutController extends Controller
         $about = About::find($id);
         $about->delete();
 
-        return redirect()->back()->with('success', 'Data about Berhasil diHapus');
+        return redirect()->back()->with('success', 'data about Berhasil diHapus');
     }
 }
