@@ -9,7 +9,7 @@ class About extends Model
 {
     use HasFactory;
     protected $table = 'abouts';
-    protected $primarykey ='id_about';
+    protected $primaryKey ='id_about';
 
     protected $fillable = [
         'tahun_berdiri',

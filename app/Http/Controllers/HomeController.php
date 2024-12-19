@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\About;
 use App\Models\Home;
 use App\Models\User;
+use App\Models\Menu;
+use App\Models\testimonial;
+use App\Models\Tim;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -16,6 +20,16 @@ class HomeController extends Controller
     public function dashboard()
     {
         return view('admin.dashboard');
+    }
+
+    public function userhome()
+    {
+        $home = Home::first();
+        $about = About::first();
+        $menus = Menu::all();
+        $testimonials = testimonial::all();
+        $tims = Tim::all();
+        return view('user.home', compact('home', 'about', 'menus', 'testimonials', 'tims'));
     }
 
     /**

@@ -10,9 +10,21 @@ class TestimonialController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function testimonial(Request $request)
     {
-        //
+        $request->validate([
+            'nama' => 'required',
+            'email' => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+        testimonial::create([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'deskripsi' => $request->deskripsi,
+        ]);
+        return redirect()->route('user.home')->with('success', 'testimonial berhasil ditambahkan!');
+
     }
 
     /**
