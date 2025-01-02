@@ -32,20 +32,28 @@ class ContactController extends Controller
         $request->validate([
             'alamat' => 'required',
             'kontak' => 'required',
-            'hari_operasional' => 'required',
-            'jam_oprasional' => 'required',
+            'hari_buka' => 'required',
+            'hari_tutup' => 'required',
+            'jam_buka' => 'required',
+            'jam_tutup' => 'required',
             'email' => 'required',
         ]);
+
+        // Gabungkan jam buka dan tutup
+        $jamOperasional = $request->jam_buka . ' - ' . $request->jam_tutup;
+
+        // Gabungkan hari buka dan tutup
+        $hariOperasional = $request->hari_buka . ' - ' . $request->hari_tutup;
 
         Contact::create([
             'alamat' => $request->alamat,
             'kontak' => $request->kontak,
-            'hari_operasional' => $request->hari_operasional,
-            'jam_oprasional' => $request->jam_oprasional,
+            'hari_operasional' => $hariOperasional,
+            'jam_oprasional' => $jamOperasional,
             'email' => $request->email,
         ]);
 
-        return redirect()->route('contact')->with('success','Data Contact Berhasil di Tambah');
+        return redirect()->route('contact')->with('success', 'Data Contact Berhasil di Tambah');
     }
 
     /**
@@ -77,16 +85,24 @@ class ContactController extends Controller
         $request->validate([
             'alamat' => 'required',
             'kontak' => 'required',
-            'hari_operasional' => 'required',
-            'jam_oprasional' => 'required',
+            'hari_buka' => 'required',
+            'hari_tutup' => 'required',
+            'jam_buka' => 'required',
+            'jam_tutup' => 'required',
             'email' => 'required',
         ]);
+
+        // Gabungkan jam buka dan tutup
+        $jamOperasional = $request->jam_buka . ' - ' . $request->jam_tutup;
+
+        // Gabungkan hari buka dan tutup
+        $hariOperasional = $request->hari_buka . ' - ' . $request->hari_tutup;
 
         $contact->update([
             'alamat' => $request->alamat,
             'kontak' => $request->kontak,
-            'hari_operasional' => $request->hari_operasional,
-            'jam_oprasional' => $request->jam_oprasional,
+            'hari_operasional' => $hariOperasional,
+            'jam_oprasional' => $jamOperasional,
             'email' => $request->email,
         ]);
 

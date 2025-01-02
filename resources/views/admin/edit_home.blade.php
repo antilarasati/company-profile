@@ -39,7 +39,6 @@
                         {{$message}}
                         @enderror
                     </div>
-\
                     <div class="mb-3">
                         <label for="deskripsi" class="form-label">DESKRIPSI</label>
                         <textarea name="deskripsi" id="deskripsi" rows="5" class="form-control" value="{{old('deskripsi', $home->deskripsi)}}"></textarea>
@@ -47,7 +46,7 @@
                         @error('deskripsi')
                         {{$message}}
                         @enderror
-                    
+
                     <button type="submit" class="btn btn-primary">SAVE</button>
 
                 </form>

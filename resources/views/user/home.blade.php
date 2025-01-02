@@ -399,8 +399,8 @@
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
-                        <h5 class="text-light fw-normal">{{ \Carbon\Carbon::parse($contact->hari_operasional)->format('h:i A') }}</h5>
-                        <p>{{ $contact->jam_operasional }}</p>
+                        <h5 class="text-light fw-normal">{{ $contact->hari_operasional }}</h5>
+                        <p>{{ $contact->jam_oprasional }}</p>
                     </div>
                     <div class="col-lg-3 col-md-6">
                         <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Newsletter</h4>
