@@ -23,14 +23,15 @@
                     </div>
 
                     <div class="mb-3">
-                        <label for="deskripsi" class="form-label">DESKRIPSI</label>
-                        <textarea name="deskripsi" id="deskripsi" rows="5" class="form-control" value="{{old('deskripsi', $menu->deskripsi)}}"></textarea>
-                        <div class="text-danger">
+                    <label for="deskripsi" class="form-label">DESKRIPSI</label>
+                    <textarea name="deskripsi" id="deskripsi" rows="5" class="form-control">{{ old('deskripsi', $menu->deskripsi) }}</textarea>
+                    <div class="text-danger">
                         @error('deskripsi')
                         {{$message}}
                         @enderror
-                        </div>
                     </div>
+                </div>
+
 
                     <div class="mb-3">
                         <label for="harga_menu" class="form-label">HARGA MENU</label>
