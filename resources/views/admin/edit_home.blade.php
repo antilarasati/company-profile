@@ -42,7 +42,7 @@
 \
                     <div class="mb-3">
                         <label for="deskripsi" class="form-label">DESKRIPSI</label>
-                        <input type="text" class="form-control" id="deskripsi" name="deskripsi" value="{{old('deskripsi', $home->deskripsi)}}">
+                        <textarea name="deskripsi" id="deskripsi" rows="5" class="form-control" value="{{old('deskripsi', $home->deskripsi)}}"></textarea>
                         <div class="text-danger">
                         @error('deskripsi')
                         {{$message}}

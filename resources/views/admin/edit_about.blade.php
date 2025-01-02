@@ -60,7 +60,7 @@
 
                     <div class="mb-3">
                         <label for="latar_belakang" class="form-label">LATAR BELAKANG</label>
-                        <input type="text" class="form-control" id="latar_belakang" name="latar_belakang" value="{{old('latar_belakang', $about->latar_belakang)}}">
+                        <textarea name="latar_belakang" id="latar_belakang" rows="5" class="form-control"  value="{{old('latar_belakang', $about->latar_belakang)}}"></textarea>
                         <div class="text-danger">
                         @error('latar_belakang')
                         {{$message}}
@@ -70,7 +70,7 @@
 
                     <div class="mb-3">
                         <label for="visi" class="form-label">VISI</label>
-                        <input type="text" class="form-control" id="visi" name="visi" value="{{old('visi', $about->visi)}}">
+                        <textarea name="visi" id="visi" rows="5" class="form-control"  value="{{old('visi', $about->visi)}}"></textarea>
                         <div class="text-danger">
                         @error('visi')
                         {{$message}}
@@ -80,7 +80,7 @@
 
                     <div class="mb-3">
                         <label for="misi" class="form-label">MISI</label>
-                        <input type="text" class="form-control" id="misi" name="misi" value="{{old('misi', $about->misi)}}">
+                        <textarea name="misi" id="misi" rows="5" class="form-control"  value="{{old('misi', $about->misi)}}"></textarea>
                         <div class="text-danger">
                         @error('misi')
                         {{$message}}
