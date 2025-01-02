@@ -12,7 +12,7 @@
     body {
       margin: 0;
       padding: 0;
-      background: url('assets/images/background.jpg') no-repeat center center fixed;
+      background: url('assets/img/bali.jpeg') no-repeat center center fixed;
       background-size: cover;
       font-family: Arial, sans-serif;
     }

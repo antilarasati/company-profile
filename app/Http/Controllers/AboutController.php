@@ -30,13 +30,61 @@ class AboutController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'foto1' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'foto2' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'foto3' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'foto4' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'tahun_berdiri' => 'required',
             'latar_belakang' => 'required',
             'visi' => 'required',
             'misi' => 'required',
         ]);
 
+        $foto1 = null;
+
+        if ($request->hasFile('foto1')) {
+            $uniqueField = uniqid(). '_' . $request->file('foto1')->getClientOriginalName();
+
+            $request->file('foto1')->storeAs('foto1_about', $uniqueField, 'public');
+
+            $foto1 = 'foto1_about/' . $uniqueField;
+        }
+
+        $foto2 = null;
+
+        if ($request->hasFile('foto2')) {
+            $uniqueField = uniqid(). '_' . $request->file('foto2')->getClientOriginalName();
+
+            $request->file('foto2')->storeAs('foto2_about', $uniqueField, 'public');
+
+            $foto2 = 'foto2_about/' . $uniqueField;
+        }
+
+        $foto3 = null;
+
+        if ($request->hasFile('foto3')) {
+            $uniqueField = uniqid(). '_' . $request->file('foto3')->getClientOriginalName();
+
+            $request->file('foto3')->storeAs('foto3_about', $uniqueField, 'public');
+
+            $foto3 = 'foto3_about/' . $uniqueField;
+        }
+
+        $foto4 = null;
+
+        if ($request->hasFile('foto4')) {
+            $uniqueField = uniqid(). '_' . $request->file('foto4')->getClientOriginalName();
+
+            $request->file('foto4')->storeAs('foto4_about', $uniqueField, 'public');
+
+            $foto4 = 'foto4_about/' . $uniqueField;
+        }
+
         About::create([
+            'foto1' => $foto1,
+            'foto2' => $foto2,
+            'foto3' => $foto3,
+            'foto4' => $foto4,
             'tahun_berdiri' => $request->tahun_berdiri,
             'latar_belakang' => $request->latar_belakang,
             'visi' => $request->visi,
@@ -73,13 +121,63 @@ class AboutController extends Controller
     {
         $about = About::find($id_about);
         $request->validate([
+            'foto1' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'foto2' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'foto3' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'foto4' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'tahun_berdiri' => 'required',
             'latar_belakang' => 'required',
             'visi' => 'required',
             'misi' => 'required',
         ]);
 
+        $foto1 = null;
+
+        if ($request->hasFile('foto1')) {
+            $uniqueField = uniqid(). '_' . $request->file('foto1')->getClientOriginalName();
+
+            $request->file('foto1')->storeAs('foto1_about', $uniqueField, 'public');
+
+            $foto1 = 'foto1_about/' . $uniqueField;
+        }
+
+        $foto2 = null;
+
+        if ($request->hasFile('foto2')) {
+            $uniqueField = uniqid(). '_' . $request->file('foto3')->getClientOriginalName();
+
+            $request->file('foto3')->storeAs('foto2_about', $uniqueField, 'public');
+
+            $foto2 = 'foto2_about/' . $uniqueField;
+        }
+
+        $foto3 = null;
+
+        if ($request->hasFile('foto3')) {
+            $uniqueField = uniqid(). '_' . $request->file('foto3')->getClientOriginalName();
+
+            $request->file('foto3')->storeAs('foto3_about', $uniqueField, 'public');
+
+            $foto3 = 'foto3_about/' . $uniqueField;
+        }
+
+        $foto4 = null;
+
+        if ($request->hasFile('foto4')) {
+            $uniqueField = uniqid(). '_' . $request->file('foto4')->getClientOriginalName();
+
+            $request->file('foto4')->storeAs('foto4_about', $uniqueField, 'public');
+
+            $foto4 = 'foto4_about/' . $uniqueField;
+        }
+
+        
+
         $about->update([
+            'foto1' => $foto1,
+            'foto2' => $foto2,
+            'foto3' => $foto3,
+            'foto4' => $foto4,
             'tahun_berdiri' => $request->tahun_berdiri,
             'latar_belakang' => $request->latar_belakang,
             'visi' => $request->visi,

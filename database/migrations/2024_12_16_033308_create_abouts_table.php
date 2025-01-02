@@ -13,7 +13,11 @@ return new class extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->id('id_about')->primary()->autoIncrement();
-            $table->integer('tahun_berdiri');
+            $table->string('foto1');
+            $table->string('foto2');
+            $table->string('foto3');
+            $table->string('foto4');
+            $table->string('tahun_berdiri');
             $table->string('latar_belakang');
             $table->string('visi');
             $table->string('misi');
