@@ -26,13 +26,13 @@ class HomeController extends Controller
     public function userhome()
     {
         $home = Home::first();
-        $abouts = About::all();
+        $about = About::first();
         $menus = Menu::all();
         $testimonials = testimonial::all();
         $tims = Tim::all();
 
         // Ambil tahun berdiri dari model About
-        $tahunBerdiri = $abouts->tahun_berdiri; // Misalkan kolom ini ada di tabel abouts
+        $tahunBerdiri = $about->tahun_berdiri; // Misalkan kolom ini ada di tabel abouts
         $currentYear = Carbon::now()->year; // Ambil tahun sekarang
 
         // Hitung selisih tahun

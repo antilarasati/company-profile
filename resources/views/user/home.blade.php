@@ -128,7 +128,6 @@
         <div class="container-xxl py-5" id="about">
             <div class="container">
                 <div class="row g-5 align-items-center">
-                    @foreach ($abouts as $about)
                     <div class="col-lg-6">
                         <div class="row g-3">
                             <div class="col-6 text-start">
@@ -147,7 +146,6 @@
                                 <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s"
                                      src="{{ asset('storage/' . $about->foto4) }}">
                             </div>
-                            @endforeach
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -351,8 +349,6 @@
                         <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
                         <p>{{ $testimonial->deskripsi }}</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle" src="{{asset('assets/img/testimonial-1.jpg')}}"
-                                style="width: 50px; height: 50px;">
                             <div class="ps-3">
                                 <h5 class="mb-1">{{ $testimonial->nama }}</h5>
                                 <small>{{ $testimonial->email }}</small>
