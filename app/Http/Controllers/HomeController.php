@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Menu;
 use App\Models\testimonial;
 use App\Models\Tim;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -29,7 +30,14 @@ class HomeController extends Controller
         $menus = Menu::all();
         $testimonials = testimonial::all();
         $tims = Tim::all();
-        return view('user.home', compact('home', 'abouts', 'menus', 'testimonials', 'tims'));
+
+        // Ambil tahun berdiri dari model About
+        $tahunBerdiri = $abouts->tahun_berdiri; // Misalkan kolom ini ada di tabel abouts
+        $currentYear = Carbon::now()->year; // Ambil tahun sekarang
+
+        // Hitung selisih tahun
+        $yearsInBusiness = $currentYear - $tahunBerdiri;
+        return view('user.home', compact('home', 'about', 'menus', 'testimonials', 'tims', 'yearsInBusiness'));
     }
 
     /**
@@ -100,7 +108,7 @@ class HomeController extends Controller
             'deskripsi' => $request->deskripsi,
         ]);
 
-        return redirect()->route('home')->with('success','Data home Berhasil di Tambah');
+        return redirect()->route('home')->with('success', 'Data home Berhasil di Tambah');
     }
 
     /**
@@ -144,7 +152,6 @@ class HomeController extends Controller
         ]);
 
         return redirect()->route('home', $id_home)->with('success', 'Data Home Berhasil di Edit');
-
     }
 
     /**
