@@ -14,6 +14,7 @@ class Contact extends Model
     protected $fillable = [
         'alamat',
         'kontak',
+        'hari_operasional',
         'jam_oprasional',
         'email'
     ];

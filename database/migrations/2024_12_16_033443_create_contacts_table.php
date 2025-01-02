@@ -16,6 +16,7 @@ return new class extends Migration
             $table->id('id_contact')->primary()->autoIncrement();
             $table->string('alamat');
             $table->string('kontak');
+            $table->string('hari_oprasional');
             $table->time('jam_oprasional');
             $table->string('email');
             $table->timestamps();

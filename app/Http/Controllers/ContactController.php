@@ -32,6 +32,7 @@ class ContactController extends Controller
         $request->validate([
             'alamat' => 'required',
             'kontak' => 'required',
+            'hari_operasional' => 'required',
             'jam_oprasional' => 'required',
             'email' => 'required',
         ]);
@@ -39,6 +40,7 @@ class ContactController extends Controller
         Contact::create([
             'alamat' => $request->alamat,
             'kontak' => $request->kontak,
+            'hari_operasional' => $request->hari_operasional,
             'jam_oprasional' => $request->jam_oprasional,
             'email' => $request->email,
         ]);
@@ -61,7 +63,7 @@ class ContactController extends Controller
     {
         $contact = Contact::find($id_contact);
         if (!$contact) {
-            return back();  
+            return back();
         }
         return view('admin.edit_contact', compact('contact'));
     }
@@ -75,6 +77,7 @@ class ContactController extends Controller
         $request->validate([
             'alamat' => 'required',
             'kontak' => 'required',
+            'hari_operasional' => 'required',
             'jam_oprasional' => 'required',
             'email' => 'required',
         ]);
@@ -82,6 +85,7 @@ class ContactController extends Controller
         $contact->update([
             'alamat' => $request->alamat,
             'kontak' => $request->kontak,
+            'hari_operasional' => $request->hari_operasional,
             'jam_oprasional' => $request->jam_oprasional,
             'email' => $request->email,
         ]);

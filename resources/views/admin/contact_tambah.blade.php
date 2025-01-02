@@ -20,10 +20,13 @@
                         <input type="text" class="form-control" id="kontak" name="kontak" required>
                     </div>
                     <div class="mb-3">
+                        <label for="hari_operasional" class="form-label">Hari Oprasional</label>
+                        <input type="text" class="form-control" id="hari_operasional" name="hari_operasional" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="jam_oprasional" class="form-label">Jam Oprasional</label>
                         <input type="time" class="form-control" id="jam_oprasional" name="jam_oprasional" required>
                     </div>
-
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
                         <input type="text" class="form-control" id="email" name="email" required>

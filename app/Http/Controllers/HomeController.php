@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Contact;
 use App\Models\Home;
 use App\Models\User;
 use App\Models\Menu;
@@ -30,6 +31,7 @@ class HomeController extends Controller
         $menus = Menu::all();
         $testimonials = testimonial::all();
         $tims = Tim::all();
+        $contact = Contact::first();
 
         // Ambil tahun berdiri dari model About
         $tahunBerdiri = $about->tahun_berdiri; // Misalkan kolom ini ada di tabel abouts
