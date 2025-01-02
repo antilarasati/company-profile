@@ -12,6 +12,10 @@ class About extends Model
     protected $primaryKey ='id_about';
 
     protected $fillable = [
+        'foto1',
+        'foto2',
+        'foto3',
+        'foto4',
         'tahun_berdiri',
         'latar_belakang',
         'visi',

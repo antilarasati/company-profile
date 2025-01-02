@@ -112,24 +112,26 @@
         <div class="container-xxl py-5" id="about">
             <div class="container">
                 <div class="row g-5 align-items-center">
+                    @foreach ($abouts as $about)
                     <div class="col-lg-6">
                         <div class="row g-3">
                             <div class="col-6 text-start">
                                 <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.1s"
-                                     src="{{ asset('assets/img/about-1.jpg') }}">
+                                     src="{{ asset('storage/' . $about->foto1) }}">
                             </div>
                             <div class="col-6 text-start">
                                 <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.3s"
-                                     src="{{ asset('assets/img/about-2.jpg') }}" style="margin-top: 25%;">
+                                     src="{{ asset('storage/' . $about->foto2) }}" style="margin-top: 25%;">
                             </div>
                             <div class="col-6 text-end">
                                 <img class="img-fluid rounded w-75 wow zoomIn" data-wow-delay="0.5s"
-                                     src="{{ asset('assets/img/about-3.jpg') }}">
+                                     src="{{ asset('storage/' . $about->foto3) }}">
                             </div>
                             <div class="col-6 text-end">
                                 <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s"
-                                     src="{{ asset('assets/img/about-4.jpg') }}">
+                                     src="{{ asset('storage/' . $about->foto4) }}">
                             </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -200,12 +202,12 @@
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal">Team Members</h5>
                     <h1 class="mb-5">Our Master Chefs</h1>
                 </div>
-                @foreach ($tims as $tim )
+                @foreach ($tims as $tim)
                 <div class="row g-4">
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
-                                <img class="img-fluid" {{ $tim->foto }}>
+                            <img class="img-fluid" src="{{ asset('storage/' . $tim->foto) }}" alt="">
                             </div>
                             <h5 class="mb-0">{{ $tim->nama }}</h5>
                             <small>{{ $tim->jabatan }}</small>
@@ -251,8 +253,7 @@
                                 @foreach ($menus as $menu)
                                 <div class="col-lg-6">
                                     <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded" {{ $menu->foto }}
-                                            alt="" style="width: 80px;">
+                                    <img class="flex-shrink-0 img-fluid rounded" src="{{ asset('storage/' . $menu->foto) }}" alt="" style="width: 80px;">
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>{{ $menu->nama }}</span>

@@ -25,11 +25,11 @@ class HomeController extends Controller
     public function userhome()
     {
         $home = Home::first();
-        $about = About::first();
+        $abouts = About::all();
         $menus = Menu::all();
         $testimonials = testimonial::all();
         $tims = Tim::all();
-        return view('user.home', compact('home', 'about', 'menus', 'testimonials', 'tims'));
+        return view('user.home', compact('home', 'abouts', 'menus', 'testimonials', 'tims'));
     }
 
     /**

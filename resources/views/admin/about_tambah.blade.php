@@ -12,6 +12,22 @@
                 <form action="{{route('about.store')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="mb-3">
+                        <label for="foto1" class="form-label">Foto1</label>
+                        <input type="file" class="form-control" id="foto1" name="foto1" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="foto2" class="form-label">Foto2</label>
+                        <input type="file" class="form-control" id="foto2" name="foto2" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="foto3" class="form-label">Foto3</label>
+                        <input type="file" class="form-control" id="foto3" name="foto3" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="foto4" class="form-label">Foto4</label>
+                        <input type="file" class="form-control" id="foto4" name="foto4" required>
+                    </div>
+                    <div class="mb-3">
                         <label for="tahun_berdiri" class="form-label">Tahun Berdiri</label>
                         <input type="text" class="form-control" id="tahun_berdiri" name="tahun_berdiri" required>
                     </div>
