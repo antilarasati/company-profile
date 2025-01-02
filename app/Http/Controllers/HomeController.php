@@ -39,7 +39,7 @@ class HomeController extends Controller
 
         // Hitung selisih tahun
         $yearsInBusiness = $currentYear - $tahunBerdiri;
-        return view('user.home', compact('home', 'about', 'menus', 'testimonials', 'tims', 'yearsInBusiness'));
+        return view('user.home', compact('home', 'about', 'menus', 'testimonials', 'tims', 'yearsInBusiness', 'contact'));
     }
 
     /**

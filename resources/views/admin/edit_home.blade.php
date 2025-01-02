@@ -39,7 +39,7 @@
                         {{$message}}
                         @enderror
                     </div>
-
+                    
                     <div class="mb-3">
                         <label for="deskripsi" class="form-label">DESKRIPSI</label>
                         <textarea name="deskripsi" id="deskripsi" rows="5" class="form-control">{{ old('deskripsi', $home->deskripsi) }}</textarea>
