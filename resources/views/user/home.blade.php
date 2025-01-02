@@ -82,8 +82,8 @@
                             <style>
                                 .btn-sm {
                                     font-size: 40px; /* Ubah ukuran font sesuai kebutuhan */
-                                    line-height: 4; /* Menyesuaikan tinggi baris */
-                                    margin: 0; /* Menghapus margin jika terlalu besar */
+                                    line-height: 1.2; /* Menyesuaikan tinggi baris */
+                                    margin-bottom: 50px; /* Menghapus margin jika terlalu besar */
                                 }
                             </style>
                             <h1 class="text-white animated slideInLeft btn-sm">
@@ -111,7 +111,7 @@
                                 @if (!empty($home))
                                 {{ $home->deskripsi }}
                                 @else
-                                belum ada slogan
+                                belum ada deskripsi
                                 @endif
                             </p>
                         </div>
@@ -128,7 +128,6 @@
         <div class="container-xxl py-5" id="about">
             <div class="container">
                 <div class="row g-5 align-items-center">
-                    @foreach ($abouts as $about)
                     <div class="col-lg-6">
                         <div class="row g-3">
                             <div class="col-6 text-start">
@@ -147,7 +146,6 @@
                                 <img class="img-fluid rounded w-100 wow zoomIn" data-wow-delay="0.7s"
                                      src="{{ asset('storage/' . $about->foto4) }}">
                             </div>
-                            @endforeach
                         </div>
                     </div>
                     <div class="col-lg-6">
