@@ -12,7 +12,9 @@
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
+                    @if ($homes->isEmpty())
                     <a href="{{ route('home.tambah') }}" class="btn btn-primary btn-sm">Tambah</a>
+                    @endif
                     <table class="table text-nowrap align-middle mb-0" id="home">
                         <thead>
                             <tr class="border-2 border-bottom border-primary border-0">
