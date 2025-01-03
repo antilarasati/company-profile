@@ -374,62 +374,85 @@
     <!-- Testimonial End -->
 
     <!-- Contact Start -->
-    <div class="container-xxl py-5" id="lokasi">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h5 class="section-title ff-secondary text-center text-primary fw-normal">Location</h5>
-                <h1 class="mb-5">Alamat Restoran</h1>
-            </div>
-            <div class="col-md-12 wow fadeIn" data-wow-delay="0.1s">
-                <!-- Sertakan Leaflet CSS dan JS -->
-                <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-                <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <div class="container-xxl py-5">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Contact Us</h5>
+                    <h1 class="mb-5">Contact For Any Query</h1>
+                </div>
+                <div class="row g-6">
+                    <div class="col-12">
+                        <div class="row gy-4">
+                            <div class="col-md-3">
+                                <h5 class="section-title ff-secondary fw-normal text-start text-primary">Lokasi</h5>
+                                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>{{ $contact->alamat }}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h5 class="section-title ff-secondary fw-normal text-start text-primary">Kontak</h5>
+                                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>{{ $contact->kontak }}</p>
+                            </div>
+                            <div class="col-md-3">
+                                <h5 class="section-title ff-secondary fw-normal text-start text-primary">Email</h5>
+                                <p class="mb-2"><i class="fa fa-envelope me-3"></i>{{ $contact->email }}</p>
+                            </div>
+                            <div class="col-md-3">
+                            <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
+                                <h5 class="text-dark fw-normal">{{ $contact->hari_operasional }}</h5>
+                                <p>{{ $contact->jam_oprasional }}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 wow fadeIn" data-wow-delay="0.1s">
+                        <!-- Sertakan Leaflet CSS dan JS -->
+                        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+                        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-                <!-- Kontainer untuk peta -->
-                <div id="map" style="height: 370px;"></div>
+                        <!-- Kontainer untuk peta -->
+                        <div id="map" style="height: 370px;"></div>
 
-                <script>
-                    // Nama alamat dari controller
-                    var alamat = "{{ $alamat }}";
+                        <script>
+                            // Nama alamat dari controller
+                            var alamat = "{{ $alamat }}";
 
-                    // Gunakan Nominatim API untuk mendapatkan koordinat dari nama alamat
-                    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${alamat}`)
-                        .then(response => response.json())
-                        .then(data => {
-                            if (data.length > 0) {
-                                // Ambil koordinat dari hasil pencarian
-                                var latitude = data[0].lat;
-                                var longitude = data[0].lon;
+                            // Gunakan Nominatim API untuk mendapatkan koordinat dari nama alamat
+                            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${alamat}`)
+                                .then(response => response.json())
+                                .then(data => {
+                                    if (data.length > 0) {
+                                        // Ambil koordinat dari hasil pencarian
+                                        var latitude = data[0].lat;
+                                        var longitude = data[0].lon;
 
-                                // Membuat peta dan menambahkan marker
-                                var map = L.map('map').setView([latitude, longitude], 13);
+                                        // Membuat peta dan menambahkan marker
+                                        var map = L.map('map').setView([latitude, longitude], 13);
 
-                                // Menambahkan layer peta OpenStreetMap
-                                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                }).addTo(map);
+                                        // Menambahkan layer peta OpenStreetMap
+                                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                        }).addTo(map);
 
-                                // Menambahkan marker pada alamat dan menampilkan nama alamat dalam popup
-                                L.marker([latitude, longitude]).addTo(map)
-                                    .bindPopup('<b>' + alamat + '</b>')
-                                    .openPopup();
-                            } else {
-                                alert("alamat tidak ditemukan.");
-                            }
-                        })
-                        .catch(error => {
-                            console.error("Error:", error);
-                        });
-                </script>
+                                        // Menambahkan marker pada alamat dan menampilkan nama alamat dalam popup
+                                        L.marker([latitude, longitude]).addTo(map)
+                                            .bindPopup('<b>' + alamat + '</b>')
+                                            .openPopup();
+                                    } else {
+                                        alert("alamat tidak ditemukan.");
+                                    }
+                                })
+                                .catch(error => {
+                                    console.error("Error:", error);
+                                });
+                        </script>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Contact End -->
+        <!-- Contact End -->
 
 
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
-        <div class="container py-5">
+        <!-- <div class="container py-5">
             <div class="row g-5 justify-content-center">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
@@ -443,26 +466,17 @@
                     <p>{{ $contact->jam_oprasional }}</p>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="container">
             <div class="copyright">
-                <div class="row">
+                <div class="row g-5 justify-content-center">
                     <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
                         &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
 
                         <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a><br><br>
-                        Distributed By <a class="border-bottom" href="https://themewagon.com"
-                            target="_blank">ThemeWagon</a>
-                    </div>
-                    <div class="col-md-6 text-center text-md-end">
-                        <div class="footer-menu">
-                            <a href="">Home</a>
-                            <a href="">Cookies</a>
-                            <a href="">Help</a>
-                            <a href="">FQAs</a>
-                        </div>
+                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
+                        Distributed By <a class="border-bottom" href="https://themewagon.com" >ThemeWagon</a>
                     </div>
                 </div>
             </div>
