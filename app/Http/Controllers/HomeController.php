@@ -62,13 +62,26 @@ class HomeController extends Controller
             'username' => 'required|unique:users,username,' . $id . ',id',
             'password' => 'nullable|min:6',
             'name' => 'required',
+            'foto' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048'
+
 
         ]);
+
+        $foto = null;
+
+        if ($request->hasFile('foto')) {
+            $uniqueField = uniqid(). '_' . $request->file('foto')->getClientOriginalName();
+
+            $request->file('foto')->storeAs('foto', $uniqueField, 'public');
+
+            $foto = 'foto' . $uniqueField;
+        }
 
         $user->update([
             'username' => $request->username,
             'password' => $request->filled('password') ? Hash::make($request->password) : $user->password,
             'name' => $request->name,
+            'foto' => $request
         ]);
 
         return redirect()->route('admin.profile')->with('success', 'Data Admin Berhasil di Edit');
