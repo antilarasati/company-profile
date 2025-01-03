@@ -33,13 +33,15 @@ class HomeController extends Controller
         $tims = Tim::all();
         $contact = Contact::first();
 
+        $alamat = $contact->alamat;
+
         // Ambil tahun berdiri dari model About
         $tahunBerdiri = $about->tahun_berdiri; // Misalkan kolom ini ada di tabel abouts
         $currentYear = Carbon::now()->year; // Ambil tahun sekarang
 
         // Hitung selisih tahun
         $yearsInBusiness = $currentYear - $tahunBerdiri;
-        return view('user.home', compact('home', 'about', 'menus', 'testimonials', 'tims', 'yearsInBusiness', 'contact'));
+        return view('user.home', compact('home', 'about', 'menus', 'testimonials', 'tims', 'yearsInBusiness', 'contact', 'alamat'));
     }
 
     /**

@@ -10,7 +10,7 @@
                     @if ($abouts->isEmpty())
                     <a href="{{route('about.tambah')}}" class="btn btn-primary btn-sm">Tambah</a>
                     @endif
-                    <table class="table text-nowrap align-middle mb-0" id="about" >
+                    <table class="table" id="about" >
                         <thead>
                             <tr class="border-2 border-bottom border-primary border-0">
                                 <th scope="col" class="ps-0">NO</th>

@@ -15,7 +15,7 @@
                     @if ($homes->isEmpty())
                     <a href="{{ route('home.tambah') }}" class="btn btn-primary btn-sm">Tambah</a>
                     @endif
-                    <table class="table text-nowrap align-middle mb-0" id="home">
+                    <table class="table" id="home">
                         <thead>
                             <tr class="border-2 border-bottom border-primary border-0">
                                 <th scope="col" class="ps-0">NO</th>
