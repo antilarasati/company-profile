@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('foto3');
             $table->string('foto4');
             $table->string('tahun_berdiri');
-            $table->string('latar_belakang');
+            $table->text('latar_belakang');
             $table->string('visi');
             $table->string('misi');
             $table->timestamps();

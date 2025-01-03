@@ -216,12 +216,12 @@
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal">Team Members</h5>
                     <h1 class="mb-5">Our Master Chefs</h1>
                 </div>
-                @foreach ($tims as $tim)
                 <div class="row g-4">
+                @foreach ($tims as $tim)
                     <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                         <div class="team-item text-center rounded overflow-hidden">
                             <div class="rounded-circle overflow-hidden m-4">
-                            <img class="img-fluid" src="{{ asset('storage/' . $tim->foto) }}" alt="">
+                            <img class="img-fluid" src="{{ asset('storage/' . $tim->foto) }}" alt="" style="width: 300px; height: 300px; object-fit: cover;">
                             </div>
                             <h5 class="mb-0">{{ $tim->nama }}</h5>
                             <small>{{ $tim->jabatan }}</small>
