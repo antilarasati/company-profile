@@ -27,7 +27,6 @@
     <link href="{{ asset('assets/lib/owlcarousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css') }}" rel="stylesheet">
 
-
     <!-- Customized Bootstrap Stylesheet -->
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet">
 
@@ -45,7 +44,6 @@
             </div>
         </div>
         <!-- Spinner End -->
-
 
         <!-- Navbar & Hero Start -->
         <div class="container-xxl position-relative p-0">
@@ -73,6 +71,8 @@
                         <div class="nav-item dropdown">
                         </div>
                         <a href="#lokasi" class="nav-item nav-link">Lokasi</a>
+                    </div>
+                </div>
             </nav>
 
             <div class="container-xxl py-5 bg-dark hero-header mb-5" id="home">
@@ -242,6 +242,7 @@
                                         class="fab fa-instagram"></i></a>
                             </div>
                         </div>
+                    </div>
                 @endforeach
             </div>
         </div>
@@ -343,9 +344,6 @@
             </div>
         </div>
     </div>
-
-
-
     <!-- Reservation Start -->
 
     <!-- Testimonial Start -->
@@ -432,7 +430,7 @@
     <!-- Footer Start -->
     <div class="container-fluid bg-dark text-light footer pt-5 mt-5 wow fadeIn" data-wow-delay="0.1s">
         <div class="container py-5">
-            <div class="row g-5">
+            <div class="row g-5 justify-content-center">
                 <div class="col-lg-3 col-md-6">
                     <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Contact</h4>
                     <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>{{ $contact->alamat }}</p>
