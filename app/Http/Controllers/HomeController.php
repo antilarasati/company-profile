@@ -74,14 +74,14 @@ class HomeController extends Controller
 
             $request->file('foto')->storeAs('foto', $uniqueField, 'public');
 
-            $foto = 'foto' . $uniqueField;
+            $foto = 'foto/' . $uniqueField;
         }
 
         $user->update([
             'username' => $request->username,
             'password' => $request->filled('password') ? Hash::make($request->password) : $user->password,
             'name' => $request->name,
-            'foto' => $request
+            'foto' => $foto
         ]);
 
         return redirect()->route('admin.profile')->with('success', 'Data Admin Berhasil di Edit');

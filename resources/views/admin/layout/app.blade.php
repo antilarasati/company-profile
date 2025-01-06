@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Selera Nusantara - @yield('title')</title>
-  <link rel="shortcut icon" type="image/png" href="{{ asset('assets_main/images/logos/seodashlogo.png') }}" />
+  <link rel="shortcut icon" type="image/png" href="{{ asset('assets_main/images/logos/resto.png') }}" />
   <link rel="stylesheet" href="{{ asset('assets_main/css/styles.min.css') }}" />
 </head>
 
@@ -17,14 +17,15 @@
     <aside class="left-sidebar">
       <!-- Sidebar scroll-->
       <div>
-        <div class="brand-logo d-flex align-items-center justify-content-between">
+      <div class="brand-logo d-flex align-items-center justify-content-between" style="margin-top: 20px;">
           <a href="./index.html" class="text-nowrap logo-img">
-            <img src="{{ asset('assets_main/images/logos/logo-light.svg')}}" alt="" />
+            <img src="{{ asset('assets_main/images/logos/makan.png')}}" alt="Logo Makan" width="100" />
           </a>
           <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
             <i class="ti ti-x fs-8"></i>
           </div>
         </div>
+
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">
           <ul id="sidebarnav">
@@ -43,7 +44,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{ route('home') }}" aria-expanded="false">
                 <span>
-                  <iconify-icon icon="solar:layers-minimalistic-bold-duotone" class="fs-6"></iconify-icon>
+                <i class="ti ti-home"></i>
                 </span>
                 <span class="hide-menu">Home</span>
               </a>
@@ -51,7 +52,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{ route('about')}}" aria-expanded="false">
                 <span>
-                  <iconify-icon icon="solar:danger-circle-bold-duotone" class="fs-6"></iconify-icon>
+                <i class="ti ti-layout-grid"></i>
                 </span>
                 <span class="hide-menu">About</span>
               </a>
@@ -59,7 +60,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{ route('menu')}}" aria-expanded="false">
                 <span>
-                  <iconify-icon icon="solar:bookmark-square-minimalistic-bold-duotone" class="fs-6"></iconify-icon>
+                <i class="ti ti-tools-kitchen-2"></i>
                 </span>
                 <span class="hide-menu">Menu</span>
               </a>
@@ -67,7 +68,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{ route('tim')}}" aria-expanded="false">
                 <span>
-                  <iconify-icon icon="solar:file-text-bold-duotone" class="fs-6"></iconify-icon>
+                <i class="ti ti-steam"></i>
                 </span>
                 <span class="hide-menu">Tim</span>
               </a>
@@ -75,7 +76,7 @@
             <li class="sidebar-item">
               <a class="sidebar-link" href="{{ route('contact') }}" aria-expanded="false">
                 <span>
-                  <iconify-icon icon="solar:text-field-focus-bold-duotone" class="fs-6"></iconify-icon>
+                <i class="ti ti-address-book"></i>
                 </span>
                 <span class="hide-menu">Contact</span>
               </a>
@@ -110,7 +111,7 @@
               <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                   aria-expanded="false">
-                  <img src="{{ asset('assets_main/images/profile/user-1.jpg') }}" alt="" width="35" height="35" class="rounded-circle">
+                  <img src="{{ asset('storage/' . Auth::user()->foto) }}" alt="" width="35" height="35" class="rounded-circle">
                 </a>
                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                   <div class="message-body">

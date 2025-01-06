@@ -233,14 +233,14 @@
                             </div>
                             <h5 class="mb-0">{{ $tim->nama }}</h5>
                             <small>{{ $tim->jabatan }}</small>
-                            <div class="d-flex justify-content-center mt-3">
+                            <!-- <div class="d-flex justify-content-center mt-3">
                                 <a class="btn btn-square btn-primary mx-1" href=""><i
                                         class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-square btn-primary mx-1" href=""><i
                                         class="fab fa-twitter"></i></a>
                                 <a class="btn btn-square btn-primary mx-1" href=""><i
                                         class="fab fa-instagram"></i></a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                 @endforeach
