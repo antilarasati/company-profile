@@ -70,7 +70,7 @@
                         <a href="#menu" class="nav-item nav-link">Menu</a>
                         <div class="nav-item dropdown">
                         </div>
-                        <a href="#lokasi" class="nav-item nav-link">Lokasi</a>
+                        <a href="#contact" class="nav-item nav-link">Contact</a>
                     </div>
                 </div>
             </nav>
@@ -359,8 +359,8 @@
                         <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
                         <p>{{ $testimonial->deskripsi }}</p>
                         <div class="d-flex align-items-center">
-                            <img class="img-fluid flex-shrink-0 rounded-circle"
-                                src="{{ asset('assets/img/testimonial-1.jpg') }}" style="width: 50px; height: 50px;">
+                            
+
                             <div class="ps-3">
                                 <h5 class="mb-1">{{ $testimonial->nama }}</h5>
                                 <small>{{ $testimonial->email }}</small>
@@ -374,7 +374,7 @@
     <!-- Testimonial End -->
 
     <!-- Contact Start -->
-    <div class="container-xxl py-5">
+    <div class="container-xxl py-5" id="contact">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal">Contact Us</h5>
@@ -468,20 +468,40 @@
             </div>
         </div> -->
 
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                margin: 0;
+                padding: 0;
+            }
+            .copyright {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                text-align: center;
+                flex-wrap: wrap; /* Agar responsif jika layar kecil */
+            }
+            .copyright a {
+                margin: 0 5px; /* Memberikan jarak antar link */
+                color: #000000; /* Warna teks hitam */
+                text-decoration: none; /* Menghapus garis bawah */
+                border-bottom: 1px solid #000000; /* Garis bawah */
+            }
+            .copyright a:hover {
+                color: #007bff; /* Warna link saat di-hover */
+                border-bottom-color: #007bff; /* Warna garis bawah saat di-hover */
+            }
+        </style>
+    </head>
+    <body>
         <div class="container">
             <div class="copyright">
-                <div class="row g-5 justify-content-center">
-                    <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                        &copy; <a class="border-bottom" href="#">Your Site Name</a>, All Right Reserved.
-
-                        <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
-                        Distributed By <a class="border-bottom" href="https://themewagon.com" >ThemeWagon</a>
-                    </div>
-                </div>
+                &copy; <a href="#">Your Site Name</a>, All Right Reserved.
+                Designed By <a href="https://htmlcodex.com">HTML Codex</a>
+                Distributed By <a href="https://themewagon.com">ThemeWagon</a>
             </div>
         </div>
-    </div>
+    </body>
     <!-- Footer End -->
 
 
