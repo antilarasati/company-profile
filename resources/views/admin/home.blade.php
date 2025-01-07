@@ -31,9 +31,9 @@
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $home->nama_resto }}</td>
-                                    <td>{{ Str::limit($about->tagline, 40, '...') }}</td>
-                                    <td>{{ Str::limit($about->slogan, 40, '...') }}</td>
-                                    <td>{{ Str::limit($about->deskripsi, 40, '...') }}</td>
+                                    <td>{{ Str::limit($home->tagline, 40, '...') }}</td>
+                                    <td>{{ Str::limit($home->slogan, 40, '...') }}</td>
+                                    <td>{{ Str::limit($home->deskripsi, 40, '...') }}</td>
                                     <td>
                                         <a href="{{ route('home.edit', $home->id_home) }}"
                                             class="btn btn-warning btn-sm">Edit</a>

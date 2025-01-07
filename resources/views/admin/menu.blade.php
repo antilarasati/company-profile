@@ -29,7 +29,7 @@
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $menu->nama }}</td>
-                                    <td>{{ Str::limit($about->menu, 40, '...') }}</td>
+                                    <td>{{ Str::limit($menu->menu, 40, '...') }}</td>
                                     <td>{{ $menu->harga_menu }}</td>
                                     <td>
                                         <img src="{{ asset('storage/' . $menu->foto) }}" alt="" height="50">
