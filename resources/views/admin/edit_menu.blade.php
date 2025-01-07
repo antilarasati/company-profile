@@ -1,6 +1,6 @@
 @extends('.admin.layout.app')
 
-@section('title','Admin Edit Menu')
+@section('title','Edit Menu')
 
 @section('content')
 

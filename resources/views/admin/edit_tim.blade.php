@@ -1,6 +1,6 @@
 @extends('.admin.layout.app')
 
-@section('title','Admin Edit Tim')
+@section('title','Edit Tim')
 
 @section('content')
 
@@ -40,7 +40,7 @@
                         </div>
                     </div>
 
-                   
+
                     <button type="submit" class="btn btn-primary">SAVE</button>
 
                 </form>

@@ -1,6 +1,6 @@
 @extends('.admin.layout.app')
 
-@section('title','Admin Edit Contact')
+@section('title','Edit Contact')
 
 @section('content')
 
@@ -35,15 +35,15 @@
                     <div class="row">
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="hari_operasional" class="form-label">Hari Buka</label>
-                                <input type="text" class="form-control" id="hari_operasional" name="hari_buka" value="{{ old('hari_buka', explode(' - ', $contact->hari_operasional)[0] ?? '') }}"
+                                <label for="hari_oprasional" class="form-label">Hari Buka</label>
+                                <input type="text" class="form-control" id="hari_oprasional" name="hari_buka" value="{{ old('hari_buka', explode(' - ', $contact->hari_oprasional)[0] ?? '') }}"
                                     required>
                             </div>
                         </div>
                         <div class="col-6">
                             <div class="mb-3">
-                                <label for="hari_operasional" class="form-label">Hari Tutup</label>
-                                <input type="text" class="form-control" id="hari_operasional" name="hari_tutup" value="{{ old('hari_tutup', explode(' - ', $contact->hari_operasional)[1] ?? '') }}"
+                                <label for="hari_oprasional" class="form-label">Hari Tutup</label>
+                                <input type="text" class="form-control" id="hari_oprasional" name="hari_tutup" value="{{ old('hari_tutup', explode(' - ', $contact->hari_oprasional)[1] ?? '') }}"
                                     required>
                             </div>
                         </div>

@@ -1,6 +1,6 @@
 @extends('.admin.layout.app')
 
-@section('title','Admin Edit Home')
+@section('title','Edit Home')
 
 @section('content')
 
@@ -39,7 +39,7 @@
                         {{$message}}
                         @enderror
                     </div>
-                    
+
                     <div class="mb-3">
                         <label for="deskripsi" class="form-label">DESKRIPSI</label>
                         <textarea name="deskripsi" id="deskripsi" rows="5" class="form-control">{{ old('deskripsi', $home->deskripsi) }}</textarea>
@@ -50,7 +50,7 @@
                         </div>
                     </div>
 
-                    
+
                     <button type="submit" class="btn btn-primary">SAVE</button>
 
                 </form>

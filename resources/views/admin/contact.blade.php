@@ -1,6 +1,6 @@
 @extends('.admin.layout.app')
 
-@section('title','Admin contact')
+@section('title','Admin Contact')
 
 @section('content')
 <div class="col-lg-12">
@@ -16,7 +16,7 @@
                                 <th scope="col" class="ps-0">NO</th>
                                 <th scope="col" class="text-center">ALAMAT</th>
                                 <th scope="col" class="text-center">KONTAK</th>
-                                <th scope="col" class="text-center">HARI OPERASIONAL</th>
+                                <th scope="col" class="text-center">HARI OPRASIONAL</th>
                                 <th scope="col" class="text-center">JAM OPRASIONAL</th>
                                 <th scope="col" class="text-center">EMAIL</th>
                                 <th scope="col" class="text-center">ACTIONS</th>
@@ -29,7 +29,7 @@
                         <th scope="row">{{$loop->iteration}}</th>
                         <td  class="text-center">{{$contact->alamat}}</td>
                         <td  class="text-center">{{$contact->kontak}}</td>
-                        <td  class="text-center">{{$contact->hari_operasional}}</td>
+                        <td  class="text-center">{{$contact->hari_oprasional}}</td>
                         <td  class="text-center">{{$contact->jam_oprasional}}</td>
                         <td  class="text-center">{{$contact->email}}</td>
                         <td>
@@ -48,7 +48,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#homes').DataTable();
+        $('#contact').DataTable();
     });
 </script>
 

@@ -1,6 +1,6 @@
 @extends('.admin.layout.app')
 
-@section('title', 'Admin menu')
+@section('title', 'Admin Menu')
 
 @section('content')
     <div class="col-lg-12">
@@ -28,9 +28,9 @@
                             @foreach ($menus as $menu)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
-                                    <td class="text-center">{{ $menu->nama }}</td>
-                                    <td class="text-center">{{ $menu->deskripsi }}</td>
-                                    <td class="text-center">{{ $menu->harga_menu }}</td>
+                                    <td>{{ $menu->nama }}</td>
+                                    <td>{{ Str::limit($about->menu, 40, '...') }}</td>
+                                    <td>{{ $menu->harga_menu }}</td>
                                     <td>
                                         <img src="{{ asset('storage/' . $menu->foto) }}" alt="" height="50">
                                     </td>
@@ -52,7 +52,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#homes').DataTable();
+            $('#menu').DataTable();
         });
     </script>
 

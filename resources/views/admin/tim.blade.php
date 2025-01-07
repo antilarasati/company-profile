@@ -1,6 +1,6 @@
 @extends('.admin.layout.app')
 
-@section('title','Admin tim')
+@section('title','Admin Tim')
 
 @section('content')
 <div class="col-lg-12">
@@ -23,11 +23,11 @@
 
                         <tr>
                         <th scope="row">{{$loop->iteration}}</th>
-                        <td  class="text-center">{{$tim->nama}}</td>
+                        <td>{{$tim->nama}}</td>
                         <td>
                         <img src="{{ asset('storage/' . $tim->foto) }}" alt="" height="50">
                         </td>
-                        <td  class="text-center">{{$tim->jabatan}}</td>
+                        <td>{{$tim->jabatan}}</td>
                         <td class="text-center">
                             <a href="{{route('tim.edit', $tim->id_tim)}}" class="btn btn-warning btn-sm">Edit</a>
                             <a href="{{route('tim.delete', $tim->id_tim)}}" class="btn btn-primary btn-sm">Hapus</a>
@@ -44,7 +44,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#homes').DataTable();
+        $('#tim').DataTable();
     });
 </script>
 

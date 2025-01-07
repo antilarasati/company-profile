@@ -40,16 +40,16 @@ class ContactController extends Controller
         ]);
 
         // Gabungkan jam buka dan tutup
-        $jamOperasional = $request->jam_buka . ' - ' . $request->jam_tutup;
+        $jamOprasional = $request->jam_buka . ' - ' . $request->jam_tutup;
 
         // Gabungkan hari buka dan tutup
-        $hariOperasional = $request->hari_buka . ' - ' . $request->hari_tutup;
+        $hariOprasional = $request->hari_buka . ' - ' . $request->hari_tutup;
 
         Contact::create([
             'alamat' => $request->alamat,
             'kontak' => $request->kontak,
-            'hari_operasional' => $hariOperasional,
-            'jam_oprasional' => $jamOperasional,
+            'hari_oprasional' => $hariOprasional,
+            'jam_oprasional' => $jamOprasional,
             'email' => $request->email,
         ]);
 
@@ -93,16 +93,16 @@ class ContactController extends Controller
         ]);
 
         // Gabungkan jam buka dan tutup
-        $jamOperasional = $request->jam_buka . ' - ' . $request->jam_tutup;
+        $jamOprasional = $request->jam_buka . ' - ' . $request->jam_tutup;
 
         // Gabungkan hari buka dan tutup
-        $hariOperasional = $request->hari_buka . ' - ' . $request->hari_tutup;
+        $hariOprasional = $request->hari_buka . ' - ' . $request->hari_tutup;
 
         $contact->update([
             'alamat' => $request->alamat,
             'kontak' => $request->kontak,
-            'hari_operasional' => $hariOperasional,
-            'jam_oprasional' => $jamOperasional,
+            'hari_oprasional' => $hariOprasional,
+            'jam_oprasional' => $jamOprasional,
             'email' => $request->email,
         ]);
 

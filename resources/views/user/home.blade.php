@@ -359,7 +359,7 @@
                         <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
                         <p>{{ $testimonial->deskripsi }}</p>
                         <div class="d-flex align-items-center">
-                            
+
 
                             <div class="ps-3">
                                 <h5 class="mb-1">{{ $testimonial->nama }}</h5>
@@ -397,7 +397,7 @@
                             </div>
                             <div class="col-md-3">
                             <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
-                                <h5 class="text-dark fw-normal">{{ $contact->hari_operasional }}</h5>
+                                <h5 class="text-dark fw-normal">{{ $contact->hari_oprasional }}</h5>
                                 <p>{{ $contact->jam_oprasional }}</p>
                             </div>
                         </div>
@@ -496,9 +496,9 @@
     <body>
         <div class="container">
             <div class="copyright">
-                &copy; <a href="#">Your Site Name</a>, All Right Reserved.
-                Designed By <a href="https://htmlcodex.com">HTML Codex</a>
-                Distributed By <a href="https://themewagon.com">ThemeWagon</a>
+                &copy; <a href="#">selera nusantara</a>
+                Designed By <a href="">laras</a>
+                Distributed By <a href="">dian</a>
             </div>
         </div>
     </body>

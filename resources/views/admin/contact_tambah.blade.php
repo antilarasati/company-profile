@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('tittle', 'Tambah contact')
+@section('tittle', 'Tambah Contact')
 
 @section('content')
 
@@ -22,15 +22,15 @@
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <label for="hari_operasional" class="form-label">Hari Buka</label>
-                                    <input type="text" class="form-control" id="hari_operasional" name="hari buka"
+                                    <label for="hari_oprasional" class="form-label">Hari Buka</label>
+                                    <input type="text" class="form-control" id="hari_oprasional" name="hari buka"
                                         required>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <label for="hari_operasional" class="form-label">Hari Tutup</label>
-                                    <input type="text" class="form-control" id="hari_operasional" name="hari tutup"
+                                    <label for="hari_oprasional" class="form-label">Hari Tutup</label>
+                                    <input type="text" class="form-control" id="hari_oprasional" name="hari tutup"
                                         required>
                                 </div>
                             </div>

@@ -1,6 +1,6 @@
-@extends('.admin.layout.app')
+@extends('admin.layout.app')
 
-@section('title','Admin about')
+@section('title','Admin About')
 
 @section('content')
 <div class="col-lg-12">
@@ -42,10 +42,10 @@
                         <td>
                             <img src="{{ asset('storage/' . $about->foto4) }}" alt="" height="50">
                         </td>
-                        <td  class="text-center">{{$about->tahun_berdiri}}</td>
-                        <td  class="text-center">{{$about->latar_belakang}}</td>
-                        <td  class="text-center">{{$about->visi}}</td>
-                        <td  class="text-center">{{$about->misi}}</td>
+                        <td>{{$about->tahun_berdiri}}</td>
+                        <td>{{ Str::limit($about->latar_belakang, 40, '...') }}</td>
+                        <td>{{ Str::limit($about->visi, 40, '...') }}</td>
+                        <td>{{ Str::limit($about->misi, 40, '...') }}</td>
                         <td>
                             <a href="{{route('about.edit', $about->id_about)}}" class="btn btn-warning btn-sm">Edit</a>
                             <a href="{{route('about.delete', $about->id_about)}}" class="btn btn-primary btn-sm">Hapus</a>
@@ -62,7 +62,7 @@
 
 <script>
     $(document).ready(function() {
-        $('#homes').DataTable();
+        $('#about').DataTable();
     });
 </script>
 

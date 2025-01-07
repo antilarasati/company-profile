@@ -1,6 +1,6 @@
-@extends('.admin.layout.app')
+@extends('admin.layout.app')
 
-@section('title', 'Admin home')
+@section('title', 'Admin Home')
 
 @section('content')
     <div class="col-lg-12">
@@ -30,10 +30,10 @@
                             @foreach ($homes as $home)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
-                                    <td class="text-center">{{ $home->nama_resto }}</td>
-                                    <td class="text-center">{{ $home->tagline }}</td>
-                                    <td class="text-center">{{ $home->slogan }}</td>
-                                    <td class="text-center">{{ $home->deskripsi }}</td>
+                                    <td>{{ $home->nama_resto }}</td>
+                                    <td>{{ Str::limit($about->tagline, 40, '...') }}</td>
+                                    <td>{{ Str::limit($about->slogan, 40, '...') }}</td>
+                                    <td>{{ Str::limit($about->deskripsi, 40, '...') }}</td>
                                     <td>
                                         <a href="{{ route('home.edit', $home->id_home) }}"
                                             class="btn btn-warning btn-sm">Edit</a>
@@ -52,7 +52,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#homes').DataTable();
+            $('#home').DataTable();
         });
     </script>
 

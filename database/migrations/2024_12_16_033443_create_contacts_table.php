@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('alamat');
             $table->string('kontak');
             $table->string('hari_oprasional');
-            $table->time('jam_oprasional');
+            $table->string('jam_oprasional');
             $table->string('email');
             $table->timestamps();
         });
