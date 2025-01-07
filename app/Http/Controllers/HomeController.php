@@ -67,7 +67,7 @@ class HomeController extends Controller
 
         ]);
 
-        $foto = null;
+        $foto = $user->foto;
 
         if ($request->hasFile('foto')) {
             $uniqueField = uniqid(). '_' . $request->file('foto')->getClientOriginalName();
