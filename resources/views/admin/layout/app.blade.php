@@ -17,7 +17,7 @@
     <aside class="left-sidebar">
       <!-- Sidebar scroll-->
       <div>
-      <div class="brand-logo d-flex align-items-center justify-content-between" style="margin-top: 20px;">
+      <div class="brand-logo d-flex align-items-center justify-content-center" style="margin-top: 20px;">
           <a href="./index.html" class="text-nowrap logo-img">
             <img src="{{ asset('assets_main/images/logos/makan.png')}}" alt="Logo Makan" width="100" />
           </a>
