@@ -132,54 +132,42 @@ class AboutController extends Controller
             'misi' => 'required',
         ]);
 
-        $foto1 = $about->foto;
+        $foto1 = null;
 
         if ($request->hasFile('foto1')) {
-            if ($foto1) {
-                Storage::disk('public')->delete($foto1);
-            }
-            $uniqueField = uniqid() . '_' . $request->file('foto1')->getClientOriginalName();
+            $uniqueField = uniqid(). '_' . $request->file('foto1')->getClientOriginalName();
 
-            $request->file('foto')->storeAs('foto1_about', $uniqueField, 'public');
+            $request->file('foto1')->storeAs('foto1_about', $uniqueField, 'public');
 
             $foto1 = 'foto1_about/' . $uniqueField;
         }
 
-        $foto2 = $about->foto;
+        $foto2 = null;
 
-        if ($request->hasFile('foto')) {
-            if ($foto2) {
-                Storage::disk('public')->delete($foto2);
-            }
-            $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
+        if ($request->hasFile('foto2')) {
+            $uniqueField = uniqid(). '_' . $request->file('foto3')->getClientOriginalName();
 
-            $request->file('foto')->storeAs('foto2_about', $uniqueField, 'public');
+            $request->file('foto3')->storeAs('foto2_about', $uniqueField, 'public');
 
             $foto2 = 'foto2_about/' . $uniqueField;
         }
 
-        $foto3 = $about->foto;
+        $foto3 = null;
 
-        if ($request->hasFile('foto')) {
-            if ($foto3) {
-                Storage::disk('public')->delete($foto3);
-            }
-            $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
+        if ($request->hasFile('foto3')) {
+            $uniqueField = uniqid(). '_' . $request->file('foto3')->getClientOriginalName();
 
-            $request->file('foto')->storeAs('foto3_about', $uniqueField, 'public');
+            $request->file('foto3')->storeAs('foto3_about', $uniqueField, 'public');
 
             $foto3 = 'foto3_about/' . $uniqueField;
         }
 
-        $foto4 = $about->foto;
+        $foto4 = null;
 
-        if ($request->hasFile('foto')) {
-            if ($foto4) {
-                Storage::disk('public')->delete($foto4);
-            }
-            $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
+        if ($request->hasFile('foto4')) {
+            $uniqueField = uniqid(). '_' . $request->file('foto4')->getClientOriginalName();
 
-            $request->file('foto')->storeAs('foto4_about', $uniqueField, 'public');
+            $request->file('foto4')->storeAs('foto4_about', $uniqueField, 'public');
 
             $foto4 = 'foto4_about/' . $uniqueField;
         }
