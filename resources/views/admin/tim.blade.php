@@ -3,6 +3,14 @@
 @section('title','Admin Tim')
 
 @section('content')
+    <div class="col-lg-12">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+@section('content')
 <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
@@ -30,7 +38,7 @@
                         <td>{{$tim->jabatan}}</td>
                         <td class="text-center">
                             <a href="{{route('tim.edit', $tim->id_tim)}}" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="{{route('tim.delete', $tim->id_tim)}}" class="btn btn-primary btn-sm">Hapus</a>
+                            <a href="{{route('tim.delete', $tim->id_tim)}}" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-primary btn-sm">Hapus</a>
                         </td>
 
                     </tr>

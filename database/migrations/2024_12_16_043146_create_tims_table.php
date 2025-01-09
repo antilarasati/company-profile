@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tims', function (Blueprint $table) {
             $table->integer('id_tim')->primary()->autoIncrement();
             $table->string('nama');
-            $table->string('foto');
+            $table->string('foto', 50)->nullable();
             $table->string('jabatan');
             $table->timestamps();
         });

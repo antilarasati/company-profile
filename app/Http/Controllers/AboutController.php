@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\About;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AboutController extends Controller
 {
@@ -109,7 +110,7 @@ class AboutController extends Controller
     {
         $about = About::find($id_about);
         if (!$about) {
-            return back();  
+            return back();
         }
         return view('admin.edit_about', compact('about'));
     }
@@ -131,47 +132,57 @@ class AboutController extends Controller
             'misi' => 'required',
         ]);
 
-        $foto1 = null;
+        $foto1 = $about->foto;
 
         if ($request->hasFile('foto1')) {
-            $uniqueField = uniqid(). '_' . $request->file('foto1')->getClientOriginalName();
+            if ($foto1) {
+                Storage::disk('public')->delete($foto1);
+            }
+            $uniqueField = uniqid() . '_' . $request->file('foto1')->getClientOriginalName();
 
-            $request->file('foto1')->storeAs('foto1_about', $uniqueField, 'public');
+            $request->file('foto')->storeAs('foto1_about', $uniqueField, 'public');
 
             $foto1 = 'foto1_about/' . $uniqueField;
         }
 
-        $foto2 = null;
+        $foto2 = $about->foto;
 
-        if ($request->hasFile('foto2')) {
-            $uniqueField = uniqid(). '_' . $request->file('foto3')->getClientOriginalName();
+        if ($request->hasFile('foto')) {
+            if ($foto2) {
+                Storage::disk('public')->delete($foto2);
+            }
+            $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
 
-            $request->file('foto3')->storeAs('foto2_about', $uniqueField, 'public');
+            $request->file('foto')->storeAs('foto2_about', $uniqueField, 'public');
 
             $foto2 = 'foto2_about/' . $uniqueField;
         }
 
-        $foto3 = null;
+        $foto3 = $about->foto;
 
-        if ($request->hasFile('foto3')) {
-            $uniqueField = uniqid(). '_' . $request->file('foto3')->getClientOriginalName();
+        if ($request->hasFile('foto')) {
+            if ($foto3) {
+                Storage::disk('public')->delete($foto3);
+            }
+            $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
 
-            $request->file('foto3')->storeAs('foto3_about', $uniqueField, 'public');
+            $request->file('foto')->storeAs('foto3_about', $uniqueField, 'public');
 
             $foto3 = 'foto3_about/' . $uniqueField;
         }
 
-        $foto4 = null;
+        $foto4 = $about->foto;
 
-        if ($request->hasFile('foto4')) {
-            $uniqueField = uniqid(). '_' . $request->file('foto4')->getClientOriginalName();
+        if ($request->hasFile('foto')) {
+            if ($foto4) {
+                Storage::disk('public')->delete($foto4);
+            }
+            $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
 
-            $request->file('foto4')->storeAs('foto4_about', $uniqueField, 'public');
+            $request->file('foto')->storeAs('foto4_about', $uniqueField, 'public');
 
             $foto4 = 'foto4_about/' . $uniqueField;
         }
-
-        
 
         $about->update([
             'foto1' => $foto1,
@@ -184,7 +195,7 @@ class AboutController extends Controller
             'misi' => $request->misi,
         ]);
 
-        return redirect()->route('about', $id_about)->with('success', 'Data about Berhasil di Edit');
+        return redirect()->route('about')->with('success', 'Data about Berhasil di Edit');
     }
 
     /**
@@ -192,9 +203,18 @@ class AboutController extends Controller
      */
     public function delete($id)
     {
-        $about = About::find($id);
+        $about = about::find($id);
+
+        if ($about->foto) {
+            $foto = $about->foto;
+
+            if (Storage::disk('public')->exists($foto)) {
+                Storage::disk('public')->delete($foto);
+            }
+        }
+
         $about->delete();
 
-        return redirect()->back()->with('success', 'data about Berhasil diHapus');
+        return redirect()->back()->with('success', 'Data About berhasil di hapus.');
     }
 }

@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -168,7 +169,7 @@ class HomeController extends Controller
             'deskripsi' => $request->deskripsi,
         ]);
 
-        return redirect()->route('home', $id_home)->with('success', 'Data Home Berhasil di Edit');
+        return redirect()->route('home')->with('success', 'Data Home Berhasil di Edit');
     }
 
     /**
@@ -176,9 +177,18 @@ class HomeController extends Controller
      */
     public function delete($id)
     {
-        $home = Home::find($id);
+        $home = home::find($id);
+
+        if ($home->foto) {
+            $foto = $home->foto;
+
+            if (Storage::disk('public')->exists($foto)) {
+                Storage::disk('public')->delete($foto);
+            }
+        }
+
         $home->delete();
 
-        return redirect()->back()->with('success', 'Data HOME Berhasil diHapus');
+        return redirect()->back()->with('success', 'Data Home berhasil di hapus.');
     }
 }

@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('tittle','Tambah Menu')
+@section('title','Tambah Menu')
 
 @section('content')
 
@@ -18,7 +18,7 @@
 
                     <div class="mb-3">
                         <label for="deskripsi" class="form-label">Deskripsi</label>
-                        <textarea name="deskripsi" id="deskripsi" rows="5" class="form-control"></textarea>
+                        <textarea name="deskripsi" id="deskripsi" rows="5" class="form-control" required></textarea>
                     </div>
 
                     <div class="mb-3">

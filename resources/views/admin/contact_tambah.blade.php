@@ -1,6 +1,6 @@
 @extends('admin.layout.app')
 
-@section('tittle', 'Tambah Contact')
+@section('title', 'Tambah Contact')
 
 @section('content')
 

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Tim;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class TimController extends Controller
 {
@@ -33,7 +34,7 @@ class TimController extends Controller
             'nama' => 'required',
             'foto' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'jabatan' => 'required',
-           
+
         ]);
 
         $foto = null;
@@ -43,14 +44,14 @@ class TimController extends Controller
 
              $request->file('foto')->storeAs('foto_tim', $uniqueField, 'public');
 
-             $foto = 'foto_tim/' . $uniqueField; 
-         }       
+             $foto = 'foto_tim/' . $uniqueField;
+         }
 
         Tim::create([
             'nama' => $request->nama,
             'foto' => $foto,
             'jabatan' => $request->jabatan,
-            
+
         ]);
 
         return redirect()->route('tim')->with('success','Data tim Berhasil di Tambah');
@@ -71,7 +72,7 @@ class TimController extends Controller
     {
         $tim = Tim::find($id_tim);
         if (!$tim) {
-            return back();  
+            return back();
         }
         return view('admin.edit_tim', compact('tim'));
     }
@@ -79,42 +80,55 @@ class TimController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id_tim)
+    public function update(Request $request, string $tim)
     {
+        $tim = Tim::find($tim);
+
         $request->validate([
             'nama' => 'required',
             'foto' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
             'jabatan' => 'required',
-           
+
         ]);
 
-        $foto = null;
+        $foto = $tim->foto;
 
-         if ($request->hasFile('foto')) {
-             $uniqueField = uniqid(). '_' . $request->file('foto')->getClientOriginalName();
+        if ($request->hasFile('foto')) {
+            if ($foto) {
+                Storage::disk('public')->delete($foto);
+            }
+            $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
 
-             $request->file('foto')->storeAs('foto_tim', $uniqueField, 'public');
+            $request->file('foto')->storeAs('foto_tim', $uniqueField, 'public');
 
-             $foto = 'foto_tim/' . $uniqueField; 
-         }       
+            $foto = 'foto_tim/' . $uniqueField;
+        }
 
-        Tim::create([
+        $tim->update([
             'nama' => $request->nama,
             'foto' => $foto,
             'jabatan' => $request->jabatan,
-            
         ]);
 
-        return redirect()->route('tim', $id_tim)->with('success', 'Data tim Berhasil di Edit');
+        return redirect()->route('tim')->with('success', 'Data Tim Berhasil di Edit');
     }
 
 
     public function delete($id)
     {
-        $tim = Tim::find($id);
+        $tim = tim::find($id);
+
+        if ($tim->foto) {
+            $foto = $tim->foto;
+
+            if (Storage::disk('public')->exists($foto)) {
+                Storage::disk('public')->delete($foto);
+            }
+        }
+
         $tim->delete();
 
-        return redirect()->back()->with('success', 'data tim Berhasil diHapus');
+        return redirect()->back()->with('success', 'Data tim berhasil di hapus.');
     }
 
     /**

@@ -3,6 +3,14 @@
 @section('title','Admin About')
 
 @section('content')
+    <div class="col-lg-12">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+@section('content')
 <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
@@ -48,7 +56,7 @@
                         <td>{{ Str::limit($about->misi, 40, '...') }}</td>
                         <td>
                             <a href="{{route('about.edit', $about->id_about)}}" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="{{route('about.delete', $about->id_about)}}" class="btn btn-primary btn-sm">Hapus</a>
+                            <a href="{{route('about.delete', $about->id_about)}}" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-primary btn-sm">Hapus</a>
                         </td>
 
                     </tr>

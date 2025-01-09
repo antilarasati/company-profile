@@ -20,7 +20,7 @@
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-center" style="margin-top: 20px;">
-                    <a href="./index.html" class="text-nowrap logo-img">
+                    <a href="{{ route('admin.dashboard') }}" class="text-nowrap logo-img">
                         <img src="{{ asset('assets_main/images/logos/makan.png') }}" alt="Logo Makan" width="100" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer" id="sidebarCollapse">
@@ -115,7 +115,7 @@
                                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     <img src="{{ asset('storage/' . Auth::user()->foto) }}" alt=""
-                                        width="35" height="35" class="rounded-circle">
+                                        width="35" height="35" class="rounded-circle" style="object-fit: cover">
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up"
                                     aria-labelledby="drop2">
@@ -140,9 +140,7 @@
                 @yield('content')
                 <div class="py-6 px-6 text-center">
                     <p class="mb-0 fs-4">Design and Developed by <a href="" target="_blank"
-                            class="pe-1 text-primary text-decoration-underline">laras</a>Distributed by <a
-                            href="" target="_blank"
-                            class="pe-1 text-primary text-decoration-underline">dian</a></p>
+                            class="pe-1 text-primary text-decoration-underline">Laras & Dian</a>
                 </div>
             </div>
         </div>

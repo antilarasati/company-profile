@@ -3,6 +3,14 @@
 @section('title','Admin Contact')
 
 @section('content')
+    <div class="col-lg-12">
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+@section('content')
 <div class="col-lg-12">
         <div class="card">
             <div class="card-body">
@@ -34,7 +42,7 @@
                         <td  class="text-center">{{$contact->email}}</td>
                         <td>
                             <a href="{{route('contact.edit', $contact->id_contact)}}" class="btn btn-warning btn-sm">Edit</a>
-                            <a href="{{route('contact.delete', $contact->id_contact)}}" class="btn btn-primary btn-sm">Hapus</a>
+                            <a href="{{route('contact.delete', $contact->id_contact)}}" onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-primary btn-sm">Hapus</a>
                         </td>
 
                     </tr>

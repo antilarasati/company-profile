@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Menu;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class MenuController extends Controller
 {
@@ -43,8 +44,8 @@ class MenuController extends Controller
 
              $request->file('foto')->storeAs('foto_menu', $uniqueField, 'public');
 
-             $foto = 'foto_menu/' . $uniqueField; 
-         }       
+             $foto = 'foto_menu/' . $uniqueField;
+         }
 
         Menu::create([
             'nama' => $request->nama,
@@ -71,7 +72,7 @@ class MenuController extends Controller
     {
         $menu = Menu::find($id_menu);
         if (!$menu) {
-            return back();  
+            return back();
         }
         return view('admin.edit_menu', compact('menu'));
     }
@@ -89,15 +90,18 @@ class MenuController extends Controller
             'foto' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
         ]);
 
-        $foto = null;
+        $foto = $menu->foto;
 
-         if ($request->hasFile('foto')) {
-             $uniqueField = uniqid(). '_' . $request->file('foto')->getClientOriginalName();
+        if ($request->hasFile('foto')) {
+            if ($foto) {
+                Storage::disk('public')->delete($foto);
+            }
+            $uniqueField = uniqid() . '_' . $request->file('foto')->getClientOriginalName();
 
-             $request->file('foto')->storeAs('foto_menu', $uniqueField, 'public');
+            $request->file('foto')->storeAs('foto_menu', $uniqueField, 'public');
 
-             $foto = 'foto_menu/' . $uniqueField;
-         }
+            $foto = 'foto_menu/' . $uniqueField;
+        }
 
         $menu->update([
             'nama' => $request->nama,
@@ -106,7 +110,7 @@ class MenuController extends Controller
             'foto' => $foto,
         ]);
 
-        return redirect()->route('menu', $id_menu)->with('success', 'Data menu Berhasil di Edit');
+        return redirect()->route('menu')->with('success', 'Data Menu Berhasil di Edit');
     }
 
     /**
@@ -116,12 +120,21 @@ class MenuController extends Controller
     {
         //
     }
-    
+
     public function delete($id)
     {
-        $menu = Menu::find($id);
+        $menu = menu::find($id);
+
+        if ($menu->foto) {
+            $foto = $menu->foto;
+
+            if (Storage::disk('public')->exists($foto)) {
+                Storage::disk('public')->delete($foto);
+            }
+        }
+
         $menu->delete();
 
-        return redirect()->back()->with('success', 'data menu Berhasil diHapus');
+        return redirect()->back()->with('success', 'Data menu berhasil di hapus.');
     }
 }

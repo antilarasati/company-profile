@@ -281,7 +281,7 @@
                                         <div class="w-100 d-flex flex-column text-start ps-4">
                                             <h5 class="d-flex justify-content-between border-bottom pb-2">
                                                 <span>{{ $menu->nama }}</span>
-                                                <span class="text-primary">{{ $menu->harga_menu }}</span>
+                                                <span class="text-primary">Rp. {{ $menu->harga_menu }}</span>
                                             </h5>
                                             <small class="fst-italic">{{ $menu->deskripsi }}</small>
                                         </div>
@@ -396,12 +396,14 @@
                                 <p class="mb-2"><i class="fa fa-envelope me-3"></i>{{ $contact->email }}</p>
                             </div>
                             <div class="col-md-3">
-                            <h4 class="section-title ff-secondary text-start text-primary fw-normal mb-4">Opening</h4>
-                                <h5 class="text-dark fw-normal">{{ $contact->hari_oprasional }}</h5>
-                                <p>{{ $contact->jam_oprasional }}</p>
+                                <h5 class="section-title ff-secondary fw-normal text-start text-primary">Opening</h5>
+                                <p class="mb-2"><i class="fa fa-calendar me-3"></i>{{ $contact->hari_oprasional }}</p>
+                                <p class="mb-2"><i class="fa fa-clock me-3"></i>{{ $contact->jam_oprasional }}</p>
                             </div>
                         </div>
                     </div>
+                </div>
+
                     <div class="col-md-12 wow fadeIn" data-wow-delay="0.1s">
                         <!-- Sertakan Leaflet CSS dan JS -->
                         <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
@@ -497,8 +499,7 @@
         <div class="container">
             <div class="copyright">
                 &copy; <a href="#">selera nusantara</a>
-                Designed By <a href="">laras</a>
-                Distributed By <a href="">dian</a>
+                Design and Developed by Laras & Dian
             </div>
         </div>
     </body>

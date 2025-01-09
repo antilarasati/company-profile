@@ -29,16 +29,14 @@
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>{{ $menu->nama }}</td>
-                                    <td>{{ Str::limit($menu->menu, 40, '...') }}</td>
+                                    <td>{{ Str::limit($menu->deskripsi, 40, '...') }}</td>
                                     <td>{{ $menu->harga_menu }}</td>
                                     <td>
                                         <img src="{{ asset('storage/' . $menu->foto) }}" alt="" height="50">
                                     </td>
                                     <td class="text-center">
-                                        <a href="{{ route('menu.edit', $menu->id_menu) }}"
-                                            class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ route('menu.delete', $menu->id_menu) }}"
-                                            class="btn btn-primary btn-sm">Hapus</a>
+                                        <a href="{{ route('menu.edit', $menu->id_menu) }}"class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="{{ route('menu.delete', $menu->id_menu) }}"onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-primary btn-sm">Hapus</a>
                                     </td>
 
                                 </tr>

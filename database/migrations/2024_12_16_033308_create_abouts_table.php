@@ -13,14 +13,14 @@ return new class extends Migration
     {
         Schema::create('abouts', function (Blueprint $table) {
             $table->id('id_about')->primary()->autoIncrement();
-            $table->string('foto1');
-            $table->string('foto2');
-            $table->string('foto3');
-            $table->string('foto4');
+            $table->string('foto1', 50)->nullable();
+            $table->string('foto2', 50)->nullable();
+            $table->string('foto3', 50)->nullable();
+            $table->string('foto4', 50)->nullable();
             $table->string('tahun_berdiri');
             $table->text('latar_belakang');
-            $table->string('visi');
-            $table->string('misi');
+            $table->text('visi');
+            $table->text('misi');
             $table->timestamps();
         });
     }

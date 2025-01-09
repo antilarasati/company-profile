@@ -16,7 +16,7 @@
                 <div class="card-body">
                 <div class="d-flex align-items-center justify-content-center ms-4 mb-4">
                      <div class="position-relative">
-                        <img class="rounded-circle" src="{{ asset('storage/' . $profile->foto) }}" alt="" style="width: 100px; height: 100px;">
+                        <img class="rounded-circle" src="{{ asset('storage/' . $profile->foto) }}" alt="" style="width: 100px; height: 100px; object-fit: cover;">
                         <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
                     </div>
                 </div>

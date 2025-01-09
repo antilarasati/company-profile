@@ -35,10 +35,8 @@
                                     <td>{{ Str::limit($home->slogan, 40, '...') }}</td>
                                     <td>{{ Str::limit($home->deskripsi, 40, '...') }}</td>
                                     <td>
-                                        <a href="{{ route('home.edit', $home->id_home) }}"
-                                            class="btn btn-warning btn-sm">Edit</a>
-                                        <a href="{{ route('home.delete', $home->id_home) }}"
-                                            class="btn btn-primary btn-sm">Hapus</a>
+                                        <a href="{{ route('home.edit', $home->id_home) }}"class="btn btn-warning btn-sm">Edit</a>
+                                        <a href="{{ route('home.delete', $home->id_home) }}"onclick="return confirm('Yakin ingin hapus data?')" class="btn btn-primary btn-sm">Hapus</a>
                                     </td>
 
                                 </tr>
