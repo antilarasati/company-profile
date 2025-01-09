@@ -2,16 +2,14 @@
 
 @section('title','Admin Tim')
 
+
 @section('content')
-    <div class="col-lg-12">
+<div class="col-lg-12">
         @if (session('success'))
             <div class="alert alert-success">
                 {{ session('success') }}
             </div>
         @endif
-
-@section('content')
-<div class="col-lg-12">
         <div class="card">
             <div class="card-body">
                 <div class="table-responsive">
