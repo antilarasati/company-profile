@@ -135,10 +135,7 @@ class AboutController extends Controller
         $foto1 = $about->foto1;
 
         if ($request->hasFile('foto1')) {
-            if ($foto1) {
-                Storage::disk('public')->delete($foto1);
-            }
-            $uniqueField = uniqid() . '_' . $request->file('foto1')->getClientOriginalName();
+            $uniqueField = uniqid(). '_' . $request->file('foto1')->getClientOriginalName();
 
             $request->file('foto1')->storeAs('foto1_about', $uniqueField, 'public');
 
