@@ -62,17 +62,42 @@
                     data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
                 </button>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <div class="navbar-nav ms-auto py-0 pe-4">
-                        <a href="#home" class="nav-item nav-link active">Home</a>
-                        <a href="#about" class="nav-item nav-link">About</a>
-                        <a href="#team" class="nav-item nav-link">Team</a>
-                        <a href="#menu" class="nav-item nav-link">Menu</a>
-                        <div class="nav-item dropdown">
+                    <div class="collapse navbar-collapse" id="navbarCollapse">
+                        <div class="navbar-nav ms-auto py-0 pe-4">
+                            <a href="#home" class="nav-item nav-link active">Home</a>
+                            <a href="#about" class="nav-item nav-link">About</a>
+                            <a href="#team" class="nav-item nav-link">Team</a>
+                            <a href="#menu" class="nav-item nav-link">Menu</a>
+                            <a href="#contact" class="nav-item nav-link">Contact</a>
                         </div>
-                        <a href="#contact" class="nav-item nav-link">Contact</a>
                     </div>
-                </div>
+
+                    <style>
+                        .nav-item.nav-link {
+                            color: white; /* Warna default */
+                            text-decoration: none; /* Menghapus garis bawah */
+                            transition: color 0.3s; /* Animasi perubahan warna */
+                        }
+
+                        .nav-item.nav-link.active {
+                            color: #FFC107; /* Warna kuning untuk menu aktif */
+                            font-weight: bold; /* Menonjolkan menu aktif */
+                        }
+                    </style>
+
+                    <script>
+                        const navLinks = document.querySelectorAll('.nav-item.nav-link');
+
+                        navLinks.forEach(link => {
+                            link.addEventListener('click', function () {
+                                // Hapus kelas 'active' dari semua menu
+                                navLinks.forEach(nav => nav.classList.remove('active'));
+
+                                // Tambahkan kelas 'active' ke menu yang diklik
+                                this.classList.add('active');
+                            });
+                        });
+                    </script>
             </nav>
 
             <div class="container-xxl py-5 bg-dark hero-header mb-5" id="home">

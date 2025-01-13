@@ -34,17 +34,17 @@
 
                     <div class="mb-3">
                         <label for="latar_belakang" class="form-label">Latar Belakang</label>
-                        <textarea name="latar_belakang" id="latar_belakang" rows="5" class="form-control"></textarea>
+                        <textarea name="latar_belakang" id="latar_belakang" rows="5" class="form-control" required></textarea>
                     </div>
 
                     <div class="mb-3">
                         <label for="visi" class="form-label">Visi</label>
-                        <textarea name="visi" id="visi" rows="5" class="form-control"></textarea>
+                        <textarea name="visi" id="visi" rows="5" class="form-control" required></textarea>
                     </div>
 
                     <div class="mb-3">
                         <label for="misi" class="form-label">Misi</label>
-                        <textarea name="misi" id="misi" rows="5" class="form-control"></textarea>
+                        <textarea name="misi" id="misi" rows="5" class="form-control" required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </form>

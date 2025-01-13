@@ -71,6 +71,9 @@ class HomeController extends Controller
         $foto = $user->foto;
 
         if ($request->hasFile('foto')) {
+            if ($foto) {
+                Storage::disk('public')->delete($foto);
+            }
             $uniqueField = uniqid(). '_' . $request->file('foto')->getClientOriginalName();
 
             $request->file('foto')->storeAs('foto', $uniqueField, 'public');
@@ -107,7 +110,13 @@ class HomeController extends Controller
 
     public function create()
     {
-        return view('admin.home_tambah');
+        $home = Home::first();
+        if($home)
+        {
+        return redirect()->route('home');
+        }else {
+            return view('admin.home_tambah');
+        }
     }
 
     public function store(Request $request)
