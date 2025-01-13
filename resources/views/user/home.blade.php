@@ -79,6 +79,40 @@
                 <div class="container my-5 py-5">
                     <div class="row align-items-center g-5">
                         <div class="col-lg-6 text-center text-lg-start">
+                            @if (session('success'))
+                                <div class="alert alert-success alert-dismissible fade show custom-alert"
+                                    role="alert">
+                                    {{ session('success') }}
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
+                                        aria-label="Close"></button>
+                                </div>
+                            @endif
+                            <style>
+                                .custom-alert {
+                                    position: absolute;
+                                    top: 10%;
+                                    left: 50%;
+                                    transform: translateX(-50%);
+                                    width: 70%;
+                                    z-index: 1050;
+                                    padding: 15px;
+                                    border-radius: 5px;
+                                    background-color: #d4edda;
+                                    color: #155724;
+                                    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+                                }
+                            </style>
+                            <script>
+                                setTimeout(function() {
+                                    var alert = document.querySelector('.alert');
+                                    if (alert) {
+                                        alert.style.transition = 'opacity 0.7s ease';
+                                        alert.style.opacity = '0';
+                                        setTimeout(() => alert.remove(), 500);
+                                    }
+                                }, 5000);
+                            </script>
+
                             <style>
                                 .btn-sm {
                                     font-size: 40px;
@@ -225,15 +259,16 @@
                     <h1 class="mb-5">Our Master Chefs</h1>
                 </div>
                 <div class="row g-4">
-                @foreach ($tims as $tim)
-                    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="team-item text-center rounded overflow-hidden">
-                            <div class="rounded-circle overflow-hidden m-4">
-                            <img class="img-fluid" src="{{ asset('storage/' . $tim->foto) }}" alt="" style="width: 300px; height: 300px; object-fit: cover;">
-                            </div>
-                            <h5 class="mb-0">{{ $tim->nama }}</h5>
-                            <small>{{ $tim->jabatan }}</small>
-                            <!-- <div class="d-flex justify-content-center mt-3">
+                    @foreach ($tims as $tim)
+                        <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+                            <div class="team-item text-center rounded overflow-hidden">
+                                <div class="rounded-circle overflow-hidden m-4">
+                                    <img class="img-fluid" src="{{ asset('storage/' . $tim->foto) }}" alt=""
+                                        style="width: 300px; height: 300px; object-fit: cover;">
+                                </div>
+                                <h5 class="mb-0">{{ $tim->nama }}</h5>
+                                <small>{{ $tim->jabatan }}</small>
+                                <!-- <div class="d-flex justify-content-center mt-3">
                                 <a class="btn btn-square btn-primary mx-1" href=""><i
                                         class="fab fa-facebook-f"></i></a>
                                 <a class="btn btn-square btn-primary mx-1" href=""><i
@@ -241,140 +276,138 @@
                                 <a class="btn btn-square btn-primary mx-1" href=""><i
                                         class="fab fa-instagram"></i></a>
                             </div> -->
+                            </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Team End -->
+        <!-- Team End -->
 
-    <!-- Menu Start -->
-    <div class="container-xxl py-5" id="menu">
-        <div class="container">
-            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
-                <h1 class="mb-5">Most Popular Items</h1>
-            </div>
-            <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
-                <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
-                    <li class="nav-item">
-                        <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill"
-                            href="#tab-1">
-                            <i class="fa fa-utensils fa-2x text-primary"></i>
-                            <div class="ps-3">
-                                <small class="text-body">Populer</small>
-                                <h6 class="mt-n1 mb-0">Our Menu</h6>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div id="tab-1" class="tab-pane fade show p-0 active">
-                        <div class="row g-4">
-                            @foreach ($menus as $menu)
-                                <div class="col-lg-6">
-                                    <div class="d-flex align-items-center">
-                                        <img class="flex-shrink-0 img-fluid rounded"
-                                            src="{{ asset('storage/' . $menu->foto) }}" alt=""
-                                            style="width: 80px;">
-                                        <div class="w-100 d-flex flex-column text-start ps-4">
-                                            <h5 class="d-flex justify-content-between border-bottom pb-2">
-                                                <span>{{ $menu->nama }}</span>
-                                                <span class="text-primary">Rp. {{ $menu->harga_menu }}</span>
-                                            </h5>
-                                            <small class="fst-italic">{{ $menu->deskripsi }}</small>
+        <!-- Menu Start -->
+        <div class="container-xxl py-5" id="menu">
+            <div class="container">
+                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Food Menu</h5>
+                    <h1 class="mb-5">Most Popular Items</h1>
+                </div>
+                <div class="tab-class text-center wow fadeInUp" data-wow-delay="0.1s">
+                    <ul class="nav nav-pills d-inline-flex justify-content-center border-bottom mb-5">
+                        <li class="nav-item">
+                            <a class="d-flex align-items-center text-start mx-3 me-0 pb-3" data-bs-toggle="pill"
+                                href="#tab-1">
+                                <i class="fa fa-utensils fa-2x text-primary"></i>
+                                <div class="ps-3">
+                                    <small class="text-body">Populer</small>
+                                    <h6 class="mt-n1 mb-0">Our Menu</h6>
+                                </div>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane fade show p-0 active">
+                            <div class="row g-4">
+                                @foreach ($menus as $menu)
+                                    <div class="col-lg-6">
+                                        <div class="d-flex align-items-center">
+                                            <img class="flex-shrink-0 img-fluid rounded"
+                                                src="{{ asset('storage/' . $menu->foto) }}" alt=""
+                                                style="width: 80px;">
+                                            <div class="w-100 d-flex flex-column text-start ps-4">
+                                                <h5 class="d-flex justify-content-between border-bottom pb-2">
+                                                    <span>{{ $menu->nama }}</span>
+                                                    <span class="text-primary">Rp. {{ $menu->harga_menu }}</span>
+                                                </h5>
+                                                <small class="fst-italic">{{ $menu->deskripsi }}</small>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
+                                @endforeach
+                            </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Menu End -->
+
+        <!-- testimonial Start -->
+        <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
+            <div class="row g-0">
+                <!-- Kolom gambar -->
+                <div class="col-md-6">
+                    <div class="image">
+                        <img src="assets/img/Restaurant.jpg" alt="table" class="img-fluid" />
+                    </div>
+                </div>
+
+                <!-- Kolom form testimonial -->
+                <div class="col-md-6 bg-dark d-flex align-items-center">
+                    <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
+                        <h5 class="section-title ff-secondary text-start text-primary fw-normal">Testimonial</h5>
+                        <h1 class="text-white mb-4">Ceritakan Pendapat Anda</h1>
+                        <form action="{{ route('user.testimonial') }}" method="POST">
+                            @csrf
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="text" class="form-control" id="name" name="nama"
+                                            placeholder="Nama">
+                                        <label for="name">Nama</label>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-floating">
+                                        <input type="email" class="form-control" id="email" name="email"
+                                            placeholder="Email">
+                                        <label for="email">Email</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-floating">
+                                        <textarea class="form-control" placeholder="Beritahu Kami Pendapat Anda" id="message" name="deskripsi"
+                                            style="height: 100px"></textarea>
+                                        <label for="message">Beritahu Kami Pendapat Anda</label>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <button class="btn btn-primary w-100 py-3" type="submit">Kirim</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Menu End -->
+        <!-- Reservation Start -->
 
-    <!-- testimonial Start -->
-    <div class="container-xxl py-5 px-0 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="row g-0">
-            <!-- Kolom gambar -->
-            <div class="col-md-6">
-                <div class="image">
-                    <img src="assets/img/Restaurant.jpg" alt="table" class="img-fluid" />
+        <!-- Testimonial Start -->
+            <div class="container">
+                <div class="text-center">
+                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Testimonial</h5>
+                    <h1 class="mb-5">Our Clients Say!!!</h1>
                 </div>
-            </div>
-
-            <!-- Kolom form testimonial -->
-            <div class="col-md-6 bg-dark d-flex align-items-center">
-                <div class="p-5 wow fadeInUp" data-wow-delay="0.2s">
-                    <h5 class="section-title ff-secondary text-start text-primary fw-normal">Testimonial</h5>
-                    <h1 class="text-white mb-4">Ceritakan Pendapat Anda</h1>
-                    <form action="{{ route('user.testimonial') }}" method="POST">
-                        @csrf
-                        <div class="row g-3">
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="text" class="form-control" id="name" name="nama"
-                                        placeholder="Nama">
-                                    <label for="name">Nama</label>
+                <div class="owl-carousel testimonial-carousel">
+                    @foreach ($testimonials as $testimonial)
+                        <div class="testimonial-item bg-transparent border rounded p-4">
+                            <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                            <p>{{ $testimonial->deskripsi }}</p>
+                            <div class="d-flex align-items-center">
+                                <div class="ps-3">
+                                    <h5 class="mb-1">{{ $testimonial->nama }}</h5>
+                                    <small>{{ $testimonial->email }}</small>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-floating">
-                                    <input type="email" class="form-control" id="email" name="email"
-                                        placeholder="Email">
-                                    <label for="email">Email</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-floating">
-                                    <textarea class="form-control" placeholder="Beritahu Kami Pendapat Anda" id="message" name="deskripsi"
-                                        style="height: 100px"></textarea>
-                                    <label for="message">Beritahu Kami Pendapat Anda</label>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Kirim</button>
                             </div>
                         </div>
-                    </form>
+                    @endforeach
                 </div>
             </div>
         </div>
-    </div>
-    <!-- Reservation Start -->
 
-    <!-- Testimonial Start -->
-    <div class="container-xxl py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container">
-            <div class="text-center">
-                <h5 class="section-title ff-secondary text-center text-primary fw-normal">Testimonial</h5>
-                <h1 class="mb-5">Our Clients Say!!!</h1>
-            </div>
-            <div class="owl-carousel testimonial-carousel">
-                @foreach ($testimonials as $testimonial)
-                    <div class="testimonial-item bg-transparent border rounded p-4">
-                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                        <p>{{ $testimonial->deskripsi }}</p>
-                        <div class="d-flex align-items-center">
+        <!-- Testimonial End -->
 
-
-                            <div class="ps-3">
-                                <h5 class="mb-1">{{ $testimonial->nama }}</h5>
-                                <small>{{ $testimonial->email }}</small>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
-        </div>
-    </div>
-    <!-- Testimonial End -->
-
-    <!-- Contact Start -->
-    <div class="container-xxl py-5" id="contact">
+        <!-- Contact Start -->
+        <div class="container-xxl py-5" id="contact">
             <div class="container">
                 <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
                     <h5 class="section-title ff-secondary text-center text-primary fw-normal">Contact Us</h5>
@@ -397,59 +430,60 @@
                             </div>
                             <div class="col-md-3">
                                 <h5 class="section-title ff-secondary fw-normal text-start text-primary">Opening</h5>
-                                <p class="mb-2"><i class="fa fa-calendar me-3"></i>{{ $contact->hari_oprasional }}</p>
+                                <p class="mb-2"><i class="fa fa-calendar me-3"></i>{{ $contact->hari_oprasional }}
+                                </p>
                                 <p class="mb-2"><i class="fa fa-clock me-3"></i>{{ $contact->jam_oprasional }}</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                    <div class="col-md-12 wow fadeIn" data-wow-delay="0.1s">
-                        <!-- Sertakan Leaflet CSS dan JS -->
-                        <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-                        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+                <div class="col-md-12 wow fadeIn" data-wow-delay="0.1s">
+                    <!-- Sertakan Leaflet CSS dan JS -->
+                    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+                    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-                        <!-- Kontainer untuk peta -->
-                        <div id="map" style="height: 370px;"></div>
+                    <!-- Kontainer untuk peta -->
+                    <div id="map" style="height: 370px;"></div>
 
-                        <script>
-                            // Nama alamat dari controller
-                            var alamat = "{{ $alamat }}";
+                    <script>
+                        // Nama alamat dari controller
+                        var alamat = "{{ $alamat }}";
 
-                            // Gunakan Nominatim API untuk mendapatkan koordinat dari nama alamat
-                            fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${alamat}`)
-                                .then(response => response.json())
-                                .then(data => {
-                                    if (data.length > 0) {
-                                        // Ambil koordinat dari hasil pencarian
-                                        var latitude = data[0].lat;
-                                        var longitude = data[0].lon;
+                        // Gunakan Nominatim API untuk mendapatkan koordinat dari nama alamat
+                        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${alamat}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.length > 0) {
+                                    // Ambil koordinat dari hasil pencarian
+                                    var latitude = data[0].lat;
+                                    var longitude = data[0].lon;
 
-                                        // Membuat peta dan menambahkan marker
-                                        var map = L.map('map').setView([latitude, longitude], 13);
+                                    // Membuat peta dan menambahkan marker
+                                    var map = L.map('map').setView([latitude, longitude], 13);
 
-                                        // Menambahkan layer peta OpenStreetMap
-                                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                        }).addTo(map);
+                                    // Menambahkan layer peta OpenStreetMap
+                                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                    }).addTo(map);
 
-                                        // Menambahkan marker pada alamat dan menampilkan nama alamat dalam popup
-                                        L.marker([latitude, longitude]).addTo(map)
-                                            .bindPopup('<b>' + alamat + '</b>')
-                                            .openPopup();
-                                    } else {
-                                        alert("alamat tidak ditemukan.");
-                                    }
-                                })
-                                .catch(error => {
-                                    console.error("Error:", error);
-                                });
-                        </script>
-                    </div>
+                                    // Menambahkan marker pada alamat dan menampilkan nama alamat dalam popup
+                                    L.marker([latitude, longitude]).addTo(map)
+                                        .bindPopup('<b>' + alamat + '</b>')
+                                        .openPopup();
+                                } else {
+                                    alert("alamat tidak ditemukan.");
+                                }
+                            })
+                            .catch(error => {
+                                console.error("Error:", error);
+                            });
+                    </script>
                 </div>
             </div>
         </div>
-        <!-- Contact End -->
+    </div>
+    <!-- Contact End -->
 
 
     <!-- Footer Start -->
@@ -476,38 +510,49 @@
                 margin: 0;
                 padding: 0;
             }
+
             .copyright {
                 display: flex;
                 justify-content: center;
                 align-items: center;
                 text-align: center;
-                flex-wrap: wrap; /* Agar responsif jika layar kecil */
+                flex-wrap: wrap;
+                /* Agar responsif jika layar kecil */
             }
+
             .copyright a {
-                margin: 0 5px; /* Memberikan jarak antar link */
-                color: #000000; /* Warna teks hitam */
-                text-decoration: none; /* Menghapus garis bawah */
-                border-bottom: 1px solid #000000; /* Garis bawah */
+                margin: 0 5px;
+                /* Memberikan jarak antar link */
+                color: #000000;
+                /* Warna teks hitam */
+                text-decoration: none;
+                /* Menghapus garis bawah */
+                border-bottom: 1px solid #000000;
+                /* Garis bawah */
             }
+
             .copyright a:hover {
-                color: #007bff; /* Warna link saat di-hover */
-                border-bottom-color: #007bff; /* Warna garis bawah saat di-hover */
+                color: #007bff;
+                /* Warna link saat di-hover */
+                border-bottom-color: #007bff;
+                /* Warna garis bawah saat di-hover */
             }
         </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="copyright">
-                &copy; <a href="#">selera nusantara</a>
-                Design and Developed by Laras & Dian
+        </head>
+
+        <body>
+            <div class="container">
+                <div class="copyright">
+                    &copy; <a href="#">selera nusantara</a>
+                    Design and Developed by Laras & Dian
+                </div>
             </div>
-        </div>
-    </body>
-    <!-- Footer End -->
+        </body>
+        <!-- Footer End -->
 
 
-    <!-- Back to Top -->
-    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
     </div>
 
     <!-- JavaScript Libraries -->
