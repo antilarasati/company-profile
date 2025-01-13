@@ -32,7 +32,7 @@ class TimController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'foto' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'foto' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
             'jabatan' => 'required',
 
         ]);

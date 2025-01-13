@@ -32,7 +32,21 @@
                     </div>
                     <div class="mb-3">
                         <label for="jabatan" class="form-label">JABATAN</label>
-                        <input type="text" class="form-control" id="jabatan" name="jabatan" value="{{old('jabatan', $tim->jabatan)}}">
+                        <select id="jabatan" name="jabatan" class="form-select" required>
+                            <option value="">-- Pilih Jabatan --</option>
+                            <option value="Manajer Restoran" <?= $tim->jabatan == 'Manajer Restoran' ? 'selected' : '' ?>>Manajer Restoran</option>
+                            <option value="Kepala Koki" <?= $tim->jabatan == 'Kepala Koki' ? 'selected' : '' ?>>Kepala Koki</option>
+                            <option value="Koki" <?= $tim->jabatan == 'Koki' ? 'selected' : '' ?>>Koki</option>
+                            <option value="Pelayan" <?= $tim->jabatan == 'Pelayan' ? 'selected' : '' ?>>Pelayan</option>
+                            <option value="Kasir" <?= $tim->jabatan == 'Kasir' ? 'selected' : '' ?>>Kasir</option>
+                            <option value="Barista" <?= $tim->jabatan == 'Barista' ? 'selected' : '' ?>>Barista</option>
+                            <option value="Pencuci Piring" <?= $tim->jabatan == 'Pencuci Piring' ? 'selected' : '' ?>>Pencuci Piring</option>
+                            <option value="Pramusaji" <?= $tim->jabatan == 'Pramusaji' ? 'selected' : '' ?>>Pramusaji</option>
+                            <option value="Asisten Dapur" <?= $tim->jabatan == 'Asisten Dapur' ? 'selected' : '' ?>>Asisten Dapur</option>
+                            <option value="Pengelola Pesanan" <?= $tim->jabatan == 'Pengelola Pesanan' ? 'selected' : '' ?>>Pengelola Pesanan</option>
+                            <option value="Staf Logistik" <?= $tim->jabatan == 'Staf Logistik' ? 'selected' : '' ?>>Staf Logistik</option>
+                            <option value="Pramuniaga" <?= $tim->jabatan == 'Pramuniaga' ? 'selected' : '' ?>>Pramuniaga</option>
+                        </select>
                         <div class="text-danger">
                         @error('jabatan')
                         {{$message}}

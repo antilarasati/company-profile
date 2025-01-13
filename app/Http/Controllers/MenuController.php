@@ -34,7 +34,7 @@ class MenuController extends Controller
             'nama' => 'required',
             'deskripsi' => 'required',
             'harga_menu' => 'required',
-            'foto' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'foto' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
         ]);
 
         $foto = null;

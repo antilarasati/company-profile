@@ -22,7 +22,14 @@ class ContactController extends Controller
      */
     public function create()
     {
-        return view('admin.contact_tambah');
+        $contact = Contact::first();
+        if($contact)
+        {
+        return redirect()->route('contact');
+        }else {
+            return view('admin.contact_tambah');
+        }
+        
     }
 
     /**

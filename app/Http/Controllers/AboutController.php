@@ -22,7 +22,14 @@ class AboutController extends Controller
      */
     public function create()
     {
-        return view('admin.about_tambah');
+        $about = About::first();
+        if($about)
+        {
+        return redirect()->route('about');
+        }else {
+            return view('admin.about_tambah');
+        }
+        
     }
 
     /**
@@ -31,10 +38,10 @@ class AboutController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'foto1' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
-            'foto2' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
-            'foto3' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
-            'foto4' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'foto1' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'foto2' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'foto3' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'foto4' => 'required|image|mimes:jpeg,jpg,png,gif|max:2048',
             'tahun_berdiri' => 'required',
             'latar_belakang' => 'required',
             'visi' => 'required',
