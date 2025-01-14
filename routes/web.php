@@ -60,4 +60,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/contact/edit/{id_contact}', [ContactController::class, 'edit'])->name('contact.edit');
     Route::put('/admin/contact/update/{id_contact}', [ContactController::class, 'update'])->name('contact.update');
     Route::get('/admin/contact/delete/{id_contact}', [ContactController::class, 'delete'])->name('contact.delete');
+
+    Route::get('/admin/testimon', [TestimonialController::class, 'testimon'])->name('testimon');
+    Route::get('/admin/testimon/delete/{id}', [TestimonialController::class, 'delete'])->name('testimon.delete');
 });

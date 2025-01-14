@@ -10,6 +10,13 @@ class TestimonialController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function testimon()
+    {
+        $testimons = testimonial::all();
+        return view('admin.testimon', compact('testimons'));
+    }
+
     public function testimonial(Request $request)
     {
         $request->validate([
@@ -70,8 +77,17 @@ class TestimonialController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(testimonial $testimonial)
-    {
-        //
+    public function delete($id)
+{
+    $testimon = testimonial::find($id);
+
+    if (!$testimon) {
+        return redirect()->back()->with('error', 'Data testimon tidak ditemukan.');
     }
+
+    $testimon->delete();
+
+    return redirect()->back()->with('success', 'Data testimon berhasil dihapus.');
+}
+
 }

@@ -83,6 +83,15 @@
                                 <span class="hide-menu">Contact</span>
                             </a>
                         </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('testimon') }}" aria-expanded="false">
+                                <span>
+                                    <i class="ti ti-align-box-left-top"></i>
+                                </span>
+                                <span class="hide-menu">Testimonial</span>
+                            </a>
+                        </li>
+
 
                 </nav>
                 <!-- End Sidebar navigation -->
