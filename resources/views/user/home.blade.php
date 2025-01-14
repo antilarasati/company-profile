@@ -3,7 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Restoran </title>
+    <title>
+        @if (!empty($home))
+            {{ $home->nama_resto }}
+        @else
+            Company Name
+        @endif
+    </title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="" name="keywords">
     <meta content="" name="description">
@@ -62,42 +68,47 @@
                     data-bs-target="#navbarCollapse">
                     <span class="fa fa-bars"></span>
                 </button>
-                    <div class="collapse navbar-collapse" id="navbarCollapse">
-                        <div class="navbar-nav ms-auto py-0 pe-4">
-                            <a href="#home" class="nav-item nav-link active">Home</a>
-                            <a href="#about" class="nav-item nav-link">About</a>
-                            <a href="#team" class="nav-item nav-link">Team</a>
-                            <a href="#menu" class="nav-item nav-link">Menu</a>
-                            <a href="#contact" class="nav-item nav-link">Contact</a>
-                        </div>
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav ms-auto py-0 pe-4">
+                        <a href="#home" class="nav-item nav-link active">Home</a>
+                        <a href="#about" class="nav-item nav-link">About</a>
+                        <a href="#team" class="nav-item nav-link">Team</a>
+                        <a href="#menu" class="nav-item nav-link">Menu</a>
+                        <a href="#contact" class="nav-item nav-link">Contact</a>
                     </div>
+                </div>
 
-                    <style>
-                        .nav-item.nav-link {
-                            color: white; /* Warna default */
-                            text-decoration: none; /* Menghapus garis bawah */
-                            transition: color 0.3s; /* Animasi perubahan warna */
-                        }
+                <style>
+                    .nav-item.nav-link {
+                        color: white;
+                        /* Warna default */
+                        text-decoration: none;
+                        /* Menghapus garis bawah */
+                        transition: color 0.3s;
+                        /* Animasi perubahan warna */
+                    }
 
-                        .nav-item.nav-link.active {
-                            color: #FFC107; /* Warna kuning untuk menu aktif */
-                            font-weight: bold; /* Menonjolkan menu aktif */
-                        }
-                    </style>
+                    .nav-item.nav-link.active {
+                        color: #FFC107;
+                        /* Warna kuning untuk menu aktif */
+                        font-weight: bold;
+                        /* Menonjolkan menu aktif */
+                    }
+                </style>
 
-                    <script>
-                        const navLinks = document.querySelectorAll('.nav-item.nav-link');
+                <script>
+                    const navLinks = document.querySelectorAll('.nav-item.nav-link');
 
-                        navLinks.forEach(link => {
-                            link.addEventListener('click', function () {
-                                // Hapus kelas 'active' dari semua menu
-                                navLinks.forEach(nav => nav.classList.remove('active'));
+                    navLinks.forEach(link => {
+                        link.addEventListener('click', function() {
+                            // Hapus kelas 'active' dari semua menu
+                            navLinks.forEach(nav => nav.classList.remove('active'));
 
-                                // Tambahkan kelas 'active' ke menu yang diklik
-                                this.classList.add('active');
-                            });
+                            // Tambahkan kelas 'active' ke menu yang diklik
+                            this.classList.add('active');
                         });
-                    </script>
+                    });
+                </script>
             </nav>
 
             <div class="container-xxl py-5 bg-dark hero-header mb-5" id="home">
@@ -407,106 +418,106 @@
         <!-- Reservation Start -->
 
         <!-- Testimonial Start -->
-            <div class="container">
-                <div class="text-center">
-                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Testimonial</h5>
-                    <h1 class="mb-5">Our Clients Say!!!</h1>
-                </div>
-                <div class="owl-carousel testimonial-carousel">
-                    @foreach ($testimonials as $testimonial)
-                        <div class="testimonial-item bg-transparent border rounded p-4">
-                            <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
-                            <p>{{ $testimonial->deskripsi }}</p>
-                            <div class="d-flex align-items-center">
-                                <div class="ps-3">
-                                    <h5 class="mb-1">{{ $testimonial->nama }}</h5>
-                                    <small>{{ $testimonial->email }}</small>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
+        <div class="container">
+            <div class="text-center">
+                <h5 class="section-title ff-secondary text-center text-primary fw-normal">Testimonial</h5>
+                <h1 class="mb-5">Our Clients Say!!!</h1>
             </div>
-        </div>
-
-        <!-- Testimonial End -->
-
-        <!-- Contact Start -->
-        <div class="container-xxl py-5" id="contact">
-            <div class="container">
-                <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
-                    <h5 class="section-title ff-secondary text-center text-primary fw-normal">Contact Us</h5>
-                    <h1 class="mb-5">Contact For Any Query</h1>
-                </div>
-                <div class="row g-6">
-                    <div class="col-12">
-                        <div class="row gy-4">
-                            <div class="col-md-3">
-                                <h5 class="section-title ff-secondary fw-normal text-start text-primary">Lokasi</h5>
-                                <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>{{ $contact->alamat }}</p>
-                            </div>
-                            <div class="col-md-3">
-                                <h5 class="section-title ff-secondary fw-normal text-start text-primary">Kontak</h5>
-                                <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>{{ $contact->kontak }}</p>
-                            </div>
-                            <div class="col-md-3">
-                                <h5 class="section-title ff-secondary fw-normal text-start text-primary">Email</h5>
-                                <p class="mb-2"><i class="fa fa-envelope me-3"></i>{{ $contact->email }}</p>
-                            </div>
-                            <div class="col-md-3">
-                                <h5 class="section-title ff-secondary fw-normal text-start text-primary">Opening</h5>
-                                <p class="mb-2"><i class="fa fa-calendar me-3"></i>{{ $contact->hari_oprasional }}
-                                </p>
-                                <p class="mb-2"><i class="fa fa-clock me-3"></i>{{ $contact->jam_oprasional }}</p>
+            <div class="owl-carousel testimonial-carousel">
+                @foreach ($testimonials as $testimonial)
+                    <div class="testimonial-item bg-transparent border rounded p-4">
+                        <i class="fa fa-quote-left fa-2x text-primary mb-3"></i>
+                        <p>{{ $testimonial->deskripsi }}</p>
+                        <div class="d-flex align-items-center">
+                            <div class="ps-3">
+                                <h5 class="mb-1">{{ $testimonial->nama }}</h5>
+                                <small>{{ $testimonial->email }}</small>
                             </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="col-md-12 wow fadeIn" data-wow-delay="0.1s">
-                    <!-- Sertakan Leaflet CSS dan JS -->
-                    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-                    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
-                    <!-- Kontainer untuk peta -->
-                    <div id="map" style="height: 370px;"></div>
-
-                    <script>
-                        // Nama alamat dari controller
-                        var alamat = "{{ $alamat }}";
-
-                        // Gunakan Nominatim API untuk mendapatkan koordinat dari nama alamat
-                        fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${alamat}`)
-                            .then(response => response.json())
-                            .then(data => {
-                                if (data.length > 0) {
-                                    // Ambil koordinat dari hasil pencarian
-                                    var latitude = data[0].lat;
-                                    var longitude = data[0].lon;
-
-                                    // Membuat peta dan menambahkan marker
-                                    var map = L.map('map').setView([latitude, longitude], 13);
-
-                                    // Menambahkan layer peta OpenStreetMap
-                                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                                        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                    }).addTo(map);
-
-                                    // Menambahkan marker pada alamat dan menampilkan nama alamat dalam popup
-                                    L.marker([latitude, longitude]).addTo(map)
-                                        .bindPopup('<b>' + alamat + '</b>')
-                                        .openPopup();
-                                } else {
-                                    alert("alamat tidak ditemukan.");
-                                }
-                            })
-                            .catch(error => {
-                                console.error("Error:", error);
-                            });
-                    </script>
-                </div>
+                @endforeach
             </div>
         </div>
+    </div>
+
+    <!-- Testimonial End -->
+
+    <!-- Contact Start -->
+    <div class="container-xxl py-5" id="contact">
+        <div class="container">
+            <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+                <h5 class="section-title ff-secondary text-center text-primary fw-normal">Contact Us</h5>
+                <h1 class="mb-5">Contact For Any Query</h1>
+            </div>
+            <div class="row g-6">
+                <div class="col-12">
+                    <div class="row gy-4">
+                        <div class="col-md-3">
+                            <h5 class="section-title ff-secondary fw-normal text-start text-primary">Lokasi</h5>
+                            <p class="mb-2"><i class="fa fa-map-marker-alt me-3"></i>{{ $contact->alamat }}</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="section-title ff-secondary fw-normal text-start text-primary">Kontak</h5>
+                            <p class="mb-2"><i class="fa fa-phone-alt me-3"></i>{{ $contact->kontak }}</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="section-title ff-secondary fw-normal text-start text-primary">Email</h5>
+                            <p class="mb-2"><i class="fa fa-envelope me-3"></i>{{ $contact->email }}</p>
+                        </div>
+                        <div class="col-md-3">
+                            <h5 class="section-title ff-secondary fw-normal text-start text-primary">Opening</h5>
+                            <p class="mb-2"><i class="fa fa-calendar me-3"></i>{{ $contact->hari_oprasional }}
+                            </p>
+                            <p class="mb-2"><i class="fa fa-clock me-3"></i>{{ $contact->jam_oprasional }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-12 wow fadeIn" data-wow-delay="0.1s">
+                <!-- Sertakan Leaflet CSS dan JS -->
+                <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+                <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
+                <!-- Kontainer untuk peta -->
+                <div id="map" style="height: 370px;"></div>
+
+                <script>
+                    // Nama alamat dari controller
+                    var alamat = "{{ $alamat }}";
+
+                    // Gunakan Nominatim API untuk mendapatkan koordinat dari nama alamat
+                    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${alamat}`)
+                        .then(response => response.json())
+                        .then(data => {
+                            if (data.length > 0) {
+                                // Ambil koordinat dari hasil pencarian
+                                var latitude = data[0].lat;
+                                var longitude = data[0].lon;
+
+                                // Membuat peta dan menambahkan marker
+                                var map = L.map('map').setView([latitude, longitude], 13);
+
+                                // Menambahkan layer peta OpenStreetMap
+                                L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                                    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                }).addTo(map);
+
+                                // Menambahkan marker pada alamat dan menampilkan nama alamat dalam popup
+                                L.marker([latitude, longitude]).addTo(map)
+                                    .bindPopup('<b>' + alamat + '</b>')
+                                    .openPopup();
+                            } else {
+                                alert("alamat tidak ditemukan.");
+                            }
+                        })
+                        .catch(error => {
+                            console.error("Error:", error);
+                        });
+                </script>
+            </div>
+        </div>
+    </div>
     </div>
     <!-- Contact End -->
 
